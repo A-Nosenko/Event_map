@@ -1,0 +1,97 @@
+
+-- users
+CREATE TABLE users(
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  login VARCHAR(256) NOT NULL,
+  password VARCHAR(256) NOT NULL
+  );
+-- roles
+CREATE TABLE roles(
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  role VARCHAR(100) NOT NULL
+  );
+-- user-roles
+CREATE TABLE user_roles(
+  user_id INT NOT NULL,
+  role_id INT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users (id),
+  FOREIGN KEY (role_id) REFERENCES roles (id),
+  UNIQUE (user_id, role_id)
+  );
+-- insert some data
+INSERT INTO roles VALUES (1, 'ROLE_USER');
+INSERT INTO roles VALUES (2, 'ROLE_ADMIN');
+INSERT INTO user_roles VALUES (1, 2);
+
+
+ALTER TABLE time_map.users ADD email VARCHAR(128) DEFAULT NULL;
+
+
+-------------------------data
+		USE time_map;
+        CREATE TABLE notes(
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        place TEXT NOT NULL,
+        placeDescription TEXT,
+        date VARCHAR(256) NOT NULL,
+        action TEXT NOT NULL
+            ) DEFAULT CHARSET=utf8;
+
+            CREATE TABLE photos (
+                id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                name TEXT NOT NULL,
+                body LONGBLOB NOT NULL,
+                	noteId INT NOT NULL,
+                FOREIGN KEY (noteId) REFERENCES notes(id)
+            		) DEFAULT CHARSET=utf8;
+==============
+ALTER TABLE notes ADD userId int NOT NULL;
+
+=====================
+USE time_map;
+     CREATE TABLE comments(
+     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+     userName TEXT NOT NULL,
+     comment TEXT,
+     noteId INT NOT NULL,
+     FOREIGN KEY (noteId) REFERENCES notes(id),
+     time DATETIME NOT NULL DEFAULT NOW()
+     ) DEFAULT CHARSET=utf8;
+======================================
+USE time_map;
+CREATE TABLE photosComment (
+                id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                name TEXT NOT NULL,
+                body LONGBLOB NOT NULL,
+                	commentId INT NOT NULL,
+                FOREIGN KEY (commentId) REFERENCES comments(id)
+            		) DEFAULT CHARSET=utf8;
+
+======================================
+
+            		ALTER TABLE time_map.notes ADD latitude VARCHAR(512) DEFAULT NULL;
+                    ALTER TABLE time_map.notes ADD longitude VARCHAR(512) DEFAULT NULL;
+
+======================================
+
+ALTER TABLE time_map.notes ADD note_time DATETIME NOT NULL DEFAULT NOW();
+
+======================================
+USE time_map;
+CREATE TABLE photosUser (
+                id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                name TEXT NOT NULL,
+                body LONGBLOB NOT NULL,
+                	userId INT NOT NULL,
+                FOREIGN KEY (userId) REFERENCES users(id)
+            		) DEFAULT CHARSET=utf8;
+
+======================================
+USE time_map;
+CREATE TABLE messages (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+userNameFrom varchar(256) NOT NULL,
+userNameTo varchar(256) NOT NULL,
+message_time DATETIME NOT NULL DEFAULT NOW(),
+message TEXT
+)DEFAULT CHARSET=utf8;
