@@ -162,12 +162,19 @@
           </c:forEach>
           </div></td>
           <td>
-           <c:if test="${pageContext.request.remoteUser == note.userName or pageContext.request.remoteUser == 'Admin'}">
+           <c:if test="${pageContext.request.remoteUser == note.userName}">
           <sf:form  action="/delete" method="post">
             <input type = "hidden" name = "id" value="${note.id}">
             <button type="submit" class="button">Удалить</button>
             </sf:form>
           </c:if>
+
+              <security:authorize access = "hasRole('ROLE_ADMIN')">
+                  <sf:form  action="/delete" method="post">
+                      <input type = "hidden" name = "id" value="${note.id}">
+                      <button type="submit" class="button">Удалить</button>
+                  </sf:form>
+              </security:authorize>
 
           <c:if test="${pageContext.request.remoteUser == note.userName}">
             <sf:form action="noteViewAndAlter" method="get">
