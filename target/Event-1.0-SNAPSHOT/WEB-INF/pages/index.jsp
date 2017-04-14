@@ -62,6 +62,12 @@
         <button type="submit" class="button">_EVENT MAP</button>
     </sf:form>
 
+    <security:authorize access = "hasRole('ROLE_ADMIN')">
+        <sf:form  action="/admin" method="post">
+            <button type="submit" class="button">ADMIN_PAGE</button>
+        </sf:form>
+    </security:authorize>
+
     <br/>
     <br/>
     <br/><br/><br/>

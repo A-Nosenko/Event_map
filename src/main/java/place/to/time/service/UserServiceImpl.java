@@ -9,6 +9,7 @@ import place.to.time.repository.RoleRepository;
 import place.to.time.repository.UserRepository;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -43,4 +44,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByEmail(String email) {return userRepository.findByEmail(email);}
 
+    @Override
+    public List<User> getUsersList() {
+        return userRepository.getAllUsers();
+    }
 }

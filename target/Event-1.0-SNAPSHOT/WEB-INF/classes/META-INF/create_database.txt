@@ -95,3 +95,8 @@ userNameTo varchar(256) NOT NULL,
 message_time DATETIME NOT NULL DEFAULT NOW(),
 message TEXT
 )DEFAULT CHARSET=utf8;
+
+======================================
+
+USE time_map;
+INSERT INTO roles (id, role) VALUES (3, 'ROLE_BANNED');
