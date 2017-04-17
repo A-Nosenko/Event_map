@@ -24,10 +24,9 @@ import java.sql.Timestamp;
 import java.util.List;
 
 
+
 @Controller
 public class DataController {
-
-
 
     @Autowired
     private NoteService noteService;

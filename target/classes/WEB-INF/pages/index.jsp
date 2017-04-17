@@ -68,6 +68,10 @@
         </sf:form>
     </security:authorize>
 
+    <sf:form action="/map" method="post">
+         <button type= "submit" class="button">===_Карта===</button>
+    </sf:form>
+
     <br/>
     <br/>
     <br/><br/><br/>

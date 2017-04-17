@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/register", "/", "/app", "/image/{id}", "/commentImage/{id}",
                         "/appSearch", "/appSearchByLogin", "/appSearchByDate", "/appSearchByAddress",
-                        "/appSortByNoteTime", "/comments", "/userImage/{userName}").permitAll()
+                        "/appSortByNoteTime", "/comments", "/userImage/{userName}", "/map").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()

@@ -94,6 +94,9 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public MessageService messageService(){return new MessageServiceImpl();}
 
+    @Bean
+    public LatLngService latLngService(){return new LatLngServiceImpl();}
+
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer){
         configurer.enable();

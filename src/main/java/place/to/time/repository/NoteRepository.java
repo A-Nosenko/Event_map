@@ -3,6 +3,7 @@ package place.to.time.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import place.to.time.application.LatLng;
 import place.to.time.model.Note;
 
 import java.util.List;
