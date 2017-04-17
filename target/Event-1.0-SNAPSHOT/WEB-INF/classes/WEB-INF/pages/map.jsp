@@ -57,8 +57,8 @@
 
 </script>
 
-Это преобразование LatLng в JSON : <br/>${getJson}
-=========================<br/>
-Это в LatLng метод toString(), и скрипт читает его как такой же JSON: <br/>  ${getLatLng}
+Преобразование LatLng в JSON : <br/>${getJson}
+===========================================================<br/>
+эквивалент из toString(): <br/>  ${getLatLng}
 </body>
 </html>

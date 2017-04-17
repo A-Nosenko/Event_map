@@ -12,9 +12,8 @@ public class LatLng {
 
     @Override
     public String toString() {
-     return "{\"lat\": \"" + lat+"\", \"lng\": \""+ lng + "\"}";
-      //  return "{\"KEY" + KEY++ + "\":[\"lat\": \"" + lat+"\", \"lng\": \""+ lng + "\"]}";
-    }
+        return "{\"lat\": \"" + lat+"\", \"lng\": \""+ lng + "\"}";
+        }
 
     public LatLng() {
     }
