@@ -11,54 +11,32 @@
 <%@ taglib prefix="security" uri ="http://www.springframework.org/security/tags"%>
 <html>
 <head>
-
   <title>==EVENT_MAP==</title>
   <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
   <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
-  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyAstb_zkWsEU3szOJ6ti59x_sZVDBCAX40"></script>
   <style type="text/css">
     span.error {
       color: orangered;
     }
+    #map {
+      height: 90%;
+      width: 90%;
+      margin: 3rem auto;
+    }
 
+    {color: black;}
+
+    p {
+      display: none;
+    }
   </style>
-
 </head>
 <body>
-
-<script>
-/*
-  $.get('http://localhost:8044/getLatLng').done(function(data){
-    console.log(data);
-  }).fail(function(xhr, textStatus, errorThrown) {
-    console.log("GET failed");
-    console.log(xhr.responseText, textStatus, errorThrown);
-  });
-  */
-</script>
-
-<script>
-
-  $.getJSON('/getJson').done(function(data){
-    console.log(data);
-  }).fail(function(xhr, textStatus, errorThrown) {
-    console.log("GET failed");
-    console.log(xhr.responseText, textStatus, errorThrown);
-  });
-
-
-
-  $.getJSON('/getLatLng').done(function(data){
-    console.log(data);
-  }).fail(function(xhr, textStatus, errorThrown) {
-    console.log("GET failed");
-    console.log(xhr.responseText, textStatus, errorThrown);
-  });
+<p id="markers">${getLatLng}</p>
+<div id="map"></div>
+<script type="text/javascript" src = "resources/js/markers.js">
 
 </script>
-
-Преобразование LatLng в JSON : <br/>${getJson}
-===========================================================<br/>
-эквивалент из toString(): <br/>  ${getLatLng}
 </body>
 </html>

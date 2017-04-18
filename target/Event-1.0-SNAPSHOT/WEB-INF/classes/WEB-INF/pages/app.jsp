@@ -87,6 +87,10 @@
   <form  action="/addNote" method="get">
     <button type="submit" class="button">= Добавить =</button>
   </form>
+
+    <sf:form action="/map" method="post">
+        <button type= "submit" class="button">===Карта===</button>
+    </sf:form>
  </div>
         </td></tr></table>
 
@@ -115,6 +119,9 @@
       <input type="text" name="pattern" placeholder="Поиск по адресу">
       </div>
   </sf:form>
+
+
+
   </div>
 
 
