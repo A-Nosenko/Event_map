@@ -28,15 +28,15 @@ function createMarker(map, title) {
             "lng" : parseFloat(markers[title].lng)
         },
         title: title,
-        animation: google.maps.Animation.DROP,
+        animation: google.maps.Animation.DROP
     })
 
     infoWindow(map, marker, title);
 }
 
-function infoWindow(map, marker, title, address = "Adress", url = "#") {
+function infoWindow(map, marker, title, address = "Adress", url = "/comments?noteId=" + markers[title].id) {
     google.maps.event.addListener(marker, 'click', () => {
-        const html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href='" + url + "'>View location</a></p></div>";
+        const html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href='" + url + "'>Просмотр события</a></p></div>";
 
     const iw = new google.maps.InfoWindow({
         content: html,

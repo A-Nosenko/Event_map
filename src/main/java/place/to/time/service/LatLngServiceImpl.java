@@ -21,7 +21,7 @@ public class LatLngServiceImpl implements LatLngService {
         List<Note> noteList = noteRepository.findAllNotes();
         List<LatLng> latLngList = new ArrayList();
         for (Note note : noteList){
-            latLngList.add(new LatLng(note.getLatitude(), note.getLongitude(), note.getPlaceDescription()));
+            latLngList.add(new LatLng(note.getId(), note.getLatitude(), note.getLongitude(),note.getPlaceDescription() + " :: " + note.getAction()));
         }
         return latLngList;
     }

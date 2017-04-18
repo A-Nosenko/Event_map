@@ -25,6 +25,11 @@
       margin: 3rem auto;
     }
 
+    h3 {
+      color: black;
+      font-size: 1.25em;
+    }
+
     {color: black;}
 
     p {

@@ -7,19 +7,20 @@ package place.to.time.application;
  */
 public class LatLng {
 
-    private static int i = 0;
+    private long id = 0;
     private String lat;
     private String lng;
     private String Marker;
 
     @Override
     public String toString() {
-        return "\"" + i++ + "__" + Marker + "\": {\"lat\": \"" + lat+"\", \"lng\": \""+ lng + "\"}";
+        return "\"" + id + "__" + Marker + "\": {\"id\": \"" + id + "\", \"lat\": \"" + lat+"\", \"lng\": \""+ lng + "\"}";
         }
     public LatLng() {
     }
 
-    public LatLng(String lat, String lng, String marker) {
+    public LatLng(long id, String lat, String lng, String marker) {
+        this.id = id;
         this.lat = lat;
         this.lng = lng;
         Marker = marker;
@@ -49,11 +50,11 @@ public class LatLng {
         Marker = marker;
     }
 
-    public static int getI() {
-        return i;
+    public long getId() {
+        return id;
     }
 
-    public static void setI(int i) {
-        LatLng.i = i;
+    public void setId(long id) {
+        this.id = id;
     }
 }
