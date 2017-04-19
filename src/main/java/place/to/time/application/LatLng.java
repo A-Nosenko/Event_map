@@ -16,6 +16,7 @@ public class LatLng {
     public String toString() {
         return "\"" + id + "__" + Marker + "\": {\"id\": \"" + id + "\", \"lat\": \"" + lat+"\", \"lng\": \""+ lng + "\"}";
         }
+
     public LatLng() {
     }
 

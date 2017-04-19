@@ -38,10 +38,35 @@
   </style>
 </head>
 <body>
-<p id="markers">${getLatLng}</p>
+
+<p id="markers">${markers}</p>
+<p id="JSONObject">${JSONObject}</p>
+
+<div align="left">
+  <a href="/"><img src="resources/images/ref.gif"></a>
+</div>
+
 <div id="map"></div>
 <script type="text/javascript" src = "resources/js/markers.js">
 
 </script>
+
+
+=====================================================<br/>
+JSON from method new Gson().toJson(latLngService.getLatLng():
+<br/>
+<br/>
+${json}
+
+<br/>
+=====================================================<br/>
+from toString() conversion:
+<br/>
+${markers}
+<br/>
+=====================================================<br/>
+JSONobject <br/>
+${JSONObject}
+<br/>
 </body>
 </html>

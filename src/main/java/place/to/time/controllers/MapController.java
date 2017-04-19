@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import place.to.time.application.LatLng;
 import place.to.time.service.LatLngService;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.json.simple.JSONObject;
 
 /**
  * Created by ENTITY on 4/15/2017.
@@ -26,40 +27,78 @@ public class MapController {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append("\'{");
+        stringBuilder.append("'{");
         for(LatLng latLng: latLngService.getLatLng()) {
             stringBuilder.append(latLng +",");
         }
         stringBuilder.deleteCharAt(stringBuilder.toString().length()-1);
-        stringBuilder.append("}\'");
-        ModelAndView modelAndView = new ModelAndView("map", "getLatLng", stringBuilder.toString() );
+        stringBuilder.append("}'");
+        ModelAndView modelAndView = new ModelAndView("map", "markers", stringBuilder.toString());
+        modelAndView.addObject("json", new Gson().toJson(latLngService.getLatLng()));
 
+        JSONObject jsonObject = new JSONObject();
+        for(LatLng latLng: latLngService.getLatLng()){
+
+            Map <String, String> values = new HashMap<>();
+            values.put("Marker", latLng.getMarker());
+            values.put("lat", latLng.getLat());
+            values.put("lng", latLng.getLng());
+
+            jsonObject.put("" + latLng.getId(), values);
+        }
+
+        modelAndView.addObject("JSONObject", jsonObject);
         return modelAndView;
     }
 
 
+    @RequestMapping("/getLatLngTest")
+    public JSONObject getLatLngTest() {
 
-    @RequestMapping("/getLatLng")
-    public void getLatLng(HttpServletRequest request, HttpServletResponse response) {
+        JSONObject jsonObject = new JSONObject();
+        for(LatLng latLng: latLngService.getLatLng()){
 
-        StringBuilder stringBuilder = new StringBuilder();
+            Map <String, String> values = new HashMap<>();
+            values.put("Marker", latLng.getMarker());
+            values.put("lat", latLng.getLat());
+            values.put("lng", latLng.getLng());
 
-        stringBuilder.append("\'{");
-        for(LatLng latLng: latLngService.getLatLng()) {
-            stringBuilder.append(latLng +",");
+            jsonObject.put("" + latLng.getId(), values);
         }
-        stringBuilder.deleteCharAt(stringBuilder.toString().length()-1);
-        stringBuilder.append("}\'");
-
-        try {
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(stringBuilder.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return jsonObject;
     }
 
 
-
 }
+/*
+*
+* var xhr = new XMLHttpRequest();
+
+xhr.open('GET', '/getLatLngTest', true);
+
+xhr.onload = function() {
+  if (this.status == 200) {
+    console.log(this.response);
+  } else {
+    new Error(this.statusText);
+  }
+};
+
+xhr.onerror = function() {
+  new Error("Network Error");
+};
+
+xhr.send();
+
+===================================
+
+$.getJSON('/getLatLngTest').done(function(data){
+    console.log(data);
+  }).fail(function(xhr, textStatus, errorThrown) {
+    console.log("GET failed");
+    console.log(xhr.responseText, textStatus, errorThrown);
+  });
+
+
+
+* */
