@@ -89,7 +89,7 @@
   </form>
 
     <sf:form action="/map" method="post">
-        <button type= "submit" class="button">===Карта===</button>
+        <button type= "submit" class="button">===Карта ===</button>
     </sf:form>
  </div>
         </td></tr></table>
@@ -150,7 +150,7 @@
               ${note.note_time}</div> </td>
           <td> <div style="height:207px; overflow:auto"><c:if test="${not empty note.latitude and not empty note.longitude}">
             <a href = "https://www.google.com.ua/maps/place/@${note.latitude},${note.longitude},291m/data=!3m2!1e3!4b1!4m5!3m4!1s0x0:0x0!8m2!3d${note.latitude}!4d${note.longitude}" target = "_blank">
-            <img alt = "== Map ==" align="middle" src = "resources/images/map.bmp">
+            <img alt = "== Map ==" align="middle" src = "resources/images/map.gif">
           </a></c:if></div> </td>
           <td> <div style="height:207px; overflow:auto"> ${note.date}</div> </td>
           <td> <div style="height:207px; overflow:auto"> ${note.placeDescription}</div> </td>

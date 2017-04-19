@@ -11,6 +11,7 @@
 <%@ taglib prefix="security" uri ="http://www.springframework.org/security/tags"%>
 <html>
 <head>
+
   <title>==EVENT_MAP==</title>
   <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
   <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
@@ -37,7 +38,20 @@
   </sf:form>
 </div>
 
+<sf:form action="/dialog" method="post">
+  <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
+  <input type="hidden" name="userNameTo" value="${userNameTo}"/>
+  <button type="submit" class="button">= Обновить =</button>
+</sf:form>
+
 <h2>Ваш логин: ${pageContext.request.remoteUser}</h2>
+
+<sf:form modelAttribute="message" method="post" action="/addMessage">
+  <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}">
+  <input type="hidden" name="userNameTo" value="${userNameTo}">
+  Сообщение: <br/> <textarea cols="100" rows="5" name="messageText"></textarea>
+  <div align="center"><button type="submit" class="button">Отправить</button></div>
+</sf:form>
 
 <c:forEach items="${messages}" var="message">
 <div align="left">
@@ -87,11 +101,6 @@
   </div>
 </c:forEach>
 
-<sf:form modelAttribute="message" method="post" action="/addMessage">
-  <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}">
-  <input type="hidden" name="userNameTo" value="${userNameTo}">
-    Сообщение: <br/> <textarea cols="100" rows="5" name="messageText"></textarea>
-  <div align="center"><button type="submit" class="button">Отправить</button></div>
-  </sf:form>
+
 </body>
 </html>

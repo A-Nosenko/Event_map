@@ -16,6 +16,7 @@
     <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
 </head>
 <body>
+
 <div align="right">
     <sf:form action="${contextPath}/logout" method="post">
         <button type= "submit" class="button">===Выйти===</button>
@@ -31,6 +32,9 @@
     <sf:form  action="/app" method="get">
         <button type="submit" class="button">_EVENT MAP</button>
     </sf:form>
+
+
+
 </div>
 
 <h2>Ваш логин: ${pageContext.request.remoteUser}</h2>
@@ -51,6 +55,12 @@
         <td width="80%">
             <div align="left">
             <h2>Сообщения:</h2>
+
+                <sf:form action="/account" method="post">
+                    <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
+                    <button type= "submit" class="button">= Обновить =</button>
+                </sf:form>
+
             <c:forEach items="${messages}" var="message">
 <table width="90%">
     <tr>

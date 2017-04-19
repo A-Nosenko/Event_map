@@ -69,7 +69,7 @@
     </security:authorize>
 
     <sf:form action="/map" method="post">
-         <button type= "submit" class="button">===_Карта===</button>
+         <button type= "submit" class="button">===Карта ===</button>
     </sf:form>
 
     <br/>

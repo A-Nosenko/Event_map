@@ -1,7 +1,9 @@
 body {
 
+	/*
 	background-image: url(../images/fon.bmp);
-	/*no-repeat;
+	background-color: rgb(110,112,120);
+	no-repeat;
 
      background-color: #F4FFE2;
 
@@ -12,9 +14,9 @@ body {
 	font-family: arial, helvetica, sans-serif;
 	font-size: 100%;
 	*/
-	background-color: rgb(110,112,120);
+	background-color: rgb(136,162,170);
 
-	color: whitesmoke;
+	color: black;
 
 	margin: 1em;
 	padding: 0;
@@ -73,10 +75,11 @@ li {
 	}
 
 table {
-	background-image: url(../images/fon.bmp);
-	background-color: rgb(110,112,120);
+	/*	background-image: url(../images/fon.bmp);
+	background-color: rgb(110,112,120); */
 	table-layout: fixed;
 	word-wrap: break-word;
+	background-color: rgb(136,162,170);
 	}
 
 td { vertical-align: top; }

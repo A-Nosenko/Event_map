@@ -66,7 +66,7 @@
         </td>
         <td> <c:if test="${not empty note.latitude and not empty note.longitude}">
           <a href = "https://www.google.com.ua/maps/place/@${note.latitude},${note.longitude},291m/data=!3m2!1e3!4b1!4m5!3m4!1s0x0:0x0!8m2!3d${note.latitude}!4d${note.longitude}" target = "_blank">
-            <img alt = "== Map ==" align="middle" src = "resources/images/map.bmp">
+            <img alt = "== Map ==" align="middle" src = "resources/images/map.gif">
           </a></c:if> </td><td> ${note.date} </td><td> ${note.placeDescription} </td><td> ${note.action} </td>
       <td>
         <c:forEach items="${photos}" var="photo">
