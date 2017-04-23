@@ -3,6 +3,7 @@ package place.to.time.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import place.to.time.model.Role;
 import place.to.time.model.User;
 import place.to.time.repository.RoleRepository;

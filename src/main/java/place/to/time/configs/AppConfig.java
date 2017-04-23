@@ -97,6 +97,9 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public LatLngService latLngService(){return new LatLngServiceImpl();}
 
+    @Bean
+    public UserRoleService userRoleService(){return  new UserRoleServiceImpl();}
+
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer){
         configurer.enable();

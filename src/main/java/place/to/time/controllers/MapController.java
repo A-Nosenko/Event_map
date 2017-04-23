@@ -70,35 +70,3 @@ public class MapController {
 
 
 }
-/*
-*
-* var xhr = new XMLHttpRequest();
-
-xhr.open('GET', '/getLatLngTest', true);
-
-xhr.onload = function() {
-  if (this.status == 200) {
-    console.log(this.response);
-  } else {
-    new Error(this.statusText);
-  }
-};
-
-xhr.onerror = function() {
-  new Error("Network Error");
-};
-
-xhr.send();
-
-===================================
-
-$.getJSON('/getLatLngTest').done(function(data){
-    console.log(data);
-  }).fail(function(xhr, textStatus, errorThrown) {
-    console.log("GET failed");
-    console.log(xhr.responseText, textStatus, errorThrown);
-  });
-
-
-
-* */

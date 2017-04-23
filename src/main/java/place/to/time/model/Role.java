@@ -2,7 +2,6 @@ package place.to.time.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 /**
  * Created by ENTITY on 2/5/2017.
@@ -19,10 +18,15 @@ public class Role implements Serializable {
     @Column(name = "role")
     private String role;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<place.to.time.model.User> users;
+    public String toString(){
+        return role;
+    }
 
     public Role() {}
+
+    public Role(String role){
+        this.role = role;
+    }
 
     public Long getId() {
         return id;
@@ -39,14 +43,5 @@ public class Role implements Serializable {
     public void setRole(String role) {
         this.role = role;
     }
-
-    public Set<place.to.time.model.User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<place.to.time.model.User> users) {
-        this.users = users;
-    }
-
 
 }

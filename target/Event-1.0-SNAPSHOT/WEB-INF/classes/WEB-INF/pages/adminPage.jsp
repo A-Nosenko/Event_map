@@ -51,12 +51,30 @@
       </c:if>
     </td>
 
-    <td width="40%">
+    <td width="10%">
+${user.roles}
+    </td>
+
+    <td width="10%">
+<sf:form action="/ban" method="post" >
+  <input type="hidden" name="id" value="${user.id}">
+  <button type="submit" class="button">=BAN =</button>
+</sf:form>
+
+      <sf:form action="/unBan" method="post" >
+        <input type="hidden" name="id" value="${user.id}">
+        <button type="submit" class="button">UNBAN</button>
+      </sf:form>
+
+    </td>
+
+    <td width="20%">
 
 
 
 
     </td>
+
   </tr>
 
 </c:forEach>
