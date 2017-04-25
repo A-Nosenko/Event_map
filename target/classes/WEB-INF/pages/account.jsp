@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri ="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>==EVENT_MAP==</title>
@@ -69,7 +70,7 @@
             Получено от  ${message.userNameFrom}<br/></c:if>
             <c:if test="${message.userNameFrom == pageContext.request.remoteUser}">
             Отправлено пользователю  ${message.userNameTo}<br/></c:if>
-            ${message.messageTime}
+            <fmt:formatDate value="${message.messageTime}" pattern="dd-MM-yyyy HH:mm:ss" />
         </div></td>
         <td width="15%">
                  <sf:form action="/dialog" method="post">

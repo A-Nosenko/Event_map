@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri ="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 
@@ -60,7 +61,7 @@
   <td width="20%"><div>
     <img  alt = "image" width="100%"  src="/userImage/${message.userNameFrom}" />
     ${message.userNameFrom}<br/>
-    ${message.messageTime}
+    <fmt:formatDate value="${message.messageTime}" pattern="dd-MM-yyyy HH:mm:ss" />
   </div></td>
     <td width="20%">
       <sf:form  action="/deleteMessage" method="post">
@@ -94,7 +95,7 @@
          <td width="20%"><div>
           <img  alt = "image" width="100%"  src="/userImage/${message.userNameFrom}" />
             ${message.userNameFrom}<br/>
-            ${message.messageTime}
+           <fmt:formatDate value="${message.messageTime}" pattern="dd-MM-yyyy HH:mm:ss" />
         </div></td>
             </tr></table>
             </c:if>

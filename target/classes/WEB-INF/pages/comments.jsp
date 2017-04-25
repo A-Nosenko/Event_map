@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri ="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
   <title>==EVENT_MAP==</title>
@@ -62,7 +63,7 @@
                 <button type="submit" class="button">Сообщение</button>
               </sf:form>
             </c:if>
-            ${note.note_time}</div>
+            <fmt:formatDate value="${note.note_time}" pattern="dd-MM-yyyy HH:mm:ss" /></div>
         </td>
         <td> <c:if test="${not empty note.latitude and not empty note.longitude}">
           <a href = "https://www.google.com.ua/maps/place/@${note.latitude},${note.longitude},291m/data=!3m2!1e3!4b1!4m5!3m4!1s0x0:0x0!8m2!3d${note.latitude}!4d${note.longitude}" target = "_blank">
@@ -123,7 +124,7 @@
             <button type="submit" class="button">Сообщение</button>
           </sf:form>
         </c:if>
-           ${comment.time}
+        <fmt:formatDate value="${comment.time}" pattern="dd-MM-yyyy HH:mm:ss" />
         </div></td>
     <td>   </td>
         <td>

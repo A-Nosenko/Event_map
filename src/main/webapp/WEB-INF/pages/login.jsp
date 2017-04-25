@@ -30,7 +30,7 @@
 
 <c:if test = "${pageContext.request.remoteUser == null}">
   <form  action="/app" method="get">
-    <button type="submit" class="button">=TIME MAP =</button>
+    <button type="submit" class="button">_EVENT MAP</button>
   </form>
     <form  action="/register" method="get">
     <button type="submit" class="button">Регистрация</button>
