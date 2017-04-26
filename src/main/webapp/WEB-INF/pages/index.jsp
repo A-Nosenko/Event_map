@@ -14,8 +14,8 @@
 
 <html>
 <head>
-    <META NAME="description" CONTENT="Данный сайт содержит информацию">
-    <META NAME="keywords" CONTENT="информация, событие, event, поиск">
+    <META NAME="description" CONTENT="Данный сайт содержит информацию для велосипедистов">
+    <META NAME="keywords" CONTENT="информация, велосипедист, событие, ДТП, event, bicycle, поиск, вело, велосипед">
     <META NAME="Document-state" CONTENT="Dynamic">
     <META NAME="AUTHOR" CONTENT="A-Nosenko">
     <title>==EVENT_MAP==</title>
@@ -34,8 +34,9 @@
 </div>
 
 <div align="right">
-
-
+    <h2>
+        <li>Информационный сервис велосипедистов Харькова.</li>
+    </h2>
 <sf:form  action="/register" method="get">
     <button type="submit" class="button">Регистрация</button>
 </sf:form>
