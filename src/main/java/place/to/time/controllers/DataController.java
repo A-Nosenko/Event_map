@@ -118,9 +118,13 @@ public class DataController {
         return "redirect:/app";
     }
 
-
     @RequestMapping(method = RequestMethod.POST, value = "/delete")
-     public String delete(@RequestParam(value="id") long id , HttpServletRequest request) {
+    public ModelAndView delete(@RequestParam(value="id") long id ) {
+        return new ModelAndView("confirmDelete", "id" , id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/deleteTrue")
+    public ModelAndView deleteTrue(@RequestParam(value="id") long id ) {
 
         if(commentService.findCommentByNoteId(id) != null){
             long[] commentIdMassive = commentService.getIdMassive(id);
@@ -137,13 +141,13 @@ public class DataController {
         if(noteService.findById(id) != null) {
             long[] photoIdMassive = photoService.getIdMassive(id);
             if(photoIdMassive.length > 0)
-            for (long photoId : photoIdMassive) {
-                photoService.delete(photoId);
-            }
+                for (long photoId : photoIdMassive) {
+                    photoService.delete(photoId);
+                }
             noteService.delete(id);
         }
 
-        return "redirect:" + request.getHeader("Referer");
+        return new ModelAndView("app", "notes", noteService.findAllNotes());
     }
 
     @RequestMapping("/image/{id}")

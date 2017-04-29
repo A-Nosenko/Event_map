@@ -34,9 +34,7 @@
 </div>
 
 <div align="right">
-    <h2>
-        <li>Информационный сервис велосипедистов Харькова.</li>
-    </h2>
+
 <sf:form  action="/register" method="get">
     <button type="submit" class="button">Регистрация</button>
 </sf:form>
