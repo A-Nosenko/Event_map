@@ -58,7 +58,7 @@
     </c:if>
 
     <sf:form  action="/app" method="get">
-        <button type="submit" class="button">_EVENT MAP</button>
+        <button type="submit" class="button">_EVENT LIST</button>
     </sf:form>
 
     <security:authorize access = "hasRole('ROLE_ADMIN')">

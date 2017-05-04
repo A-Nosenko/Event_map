@@ -26,7 +26,7 @@
 </div>
   <div align="right">
     <form  action="/app" method="get">
-      <button type="submit" class="button">_EVENT MAP</button>
+      <button type="submit" class="button">_EVENT LIST</button>
     </form>
     <c:if test = "${pageContext.request.remoteUser != null}" >
       <sf:form action="/account" method="post">

@@ -30,7 +30,7 @@
 
 <c:if test = "${pageContext.request.remoteUser == null}">
   <form  action="/app" method="get">
-    <button type="submit" class="button">_EVENT MAP</button>
+    <button type="submit" class="button">_EVENT LIST</button>
   </form>
     <form  action="/register" method="get">
     <button type="submit" class="button">Регистрация</button>
@@ -42,7 +42,7 @@
   <c:if test = "${pageContext.request.remoteUser != null}">
     <h3>Добро пожаловать!  <c:out value="${pageContext.request.remoteUser}"></c:out></h3><br/>
     <form  action="/app" method="get">
-      <button type="submit" class="button">_EVENT MAP</button>
+      <button type="submit" class="button">_EVENT LIST</button>
     </form>
     <sf:form action="/account" method="post">
       <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>

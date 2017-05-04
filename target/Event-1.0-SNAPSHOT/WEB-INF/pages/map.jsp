@@ -44,6 +44,11 @@
 
 <div align="left">
   <a href="/"><img src="resources/images/ref.gif"></a>
+
+  <form  action="/app" method="get">
+    <button type="submit" class="button">_EVENT LIST</button>
+  </form>
+
 </div>
 
 <div id="map"></div>
