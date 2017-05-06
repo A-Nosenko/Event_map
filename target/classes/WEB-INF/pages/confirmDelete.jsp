@@ -31,7 +31,7 @@
   <div align="center">
 
     <sf:form  action="/app" method="get">
-      <button type="submit" class="button">==Отмена==</button>
+      <button type="submit" class="button">Отмена</button>
     </sf:form>
   </div>
   <br/>

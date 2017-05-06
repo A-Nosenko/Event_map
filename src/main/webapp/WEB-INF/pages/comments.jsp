@@ -28,13 +28,13 @@
 <div align="right">
 
   <sf:form  action="/app" method="get">
-    <button type="submit" class="button">_EVENT LIST</button>
+    <button type="submit" class="button">EVENT LIST</button>
   </sf:form>
   <br/>
       <c:if test = "${pageContext.request.remoteUser != null}" >
         <sf:form action="/account" method="post">
           <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-        <button type= "submit" class="button">_Мой аккаунт</button>
+        <button type= "submit" class="button">Мой аккаунт</button>
         </sf:form>
       </c:if>
 

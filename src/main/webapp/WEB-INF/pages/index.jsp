@@ -43,22 +43,22 @@
     <c:if test = "${pageContext.request.remoteUser != null}" >
        Ваш логин:  <c:out value="${pageContext.request.remoteUser}       "/>
     <sf:form action="/logout" method="post">
-        <button type= "submit" class="button">===Выйти===</button>
+        <button type= "submit" class="button">Выйти</button>
     </sf:form>
         <sf:form action="/account" method="post">
             <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-        <button type= "submit" class="button">_Мой аккаунт</button>
+        <button type= "submit" class="button">Мой аккаунт</button>
         </sf:form>
     </c:if>
 
     <c:if test = "${pageContext.request.remoteUser == null}" >
             <sf:form action="/login" method="get">
-            <button type= "submit" class="button">=== Вход ===</button>
+            <button type= "submit" class="button"> Вход </button>
         </sf:form>
     </c:if>
 
     <sf:form  action="/app" method="get">
-        <button type="submit" class="button">_EVENT LIST</button>
+        <button type="submit" class="button">EVENT LIST</button>
     </sf:form>
 
     <security:authorize access = "hasRole('ROLE_ADMIN')">
@@ -68,7 +68,7 @@
     </security:authorize>
 
     <sf:form action="/map" method="post">
-         <button type= "submit" class="button">===Карта ===</button>
+         <button type= "submit" class="button">Карта</button>
     </sf:form>
 
     <br/>

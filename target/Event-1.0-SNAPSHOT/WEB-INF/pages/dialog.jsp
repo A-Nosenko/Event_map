@@ -31,18 +31,18 @@
 <div align="right">
   <sf:form action="/account" method="post">
     <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-    <button type= "submit" class="button">_Мой аккаунт</button>
+    <button type= "submit" class="button">Мой аккаунт</button>
   </sf:form>
 
   <sf:form  action="/app" method="get">
-    <button type="submit" class="button">_EVENT LIST</button>
+    <button type="submit" class="button">EVENT LIST</button>
   </sf:form>
 </div>
 
 <sf:form action="/dialog" method="post">
   <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
   <input type="hidden" name="userNameTo" value="${userNameTo}"/>
-  <button type="submit" class="button">= Обновить =</button>
+  <button type="submit" class="button"> Обновить </button>
 </sf:form>
 
 <h2>Ваш логин: ${pageContext.request.remoteUser}</h2>

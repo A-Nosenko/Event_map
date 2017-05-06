@@ -20,7 +20,7 @@
 
 <div align="right">
     <sf:form action="${contextPath}/logout" method="post">
-        <button type= "submit" class="button">===Выйти===</button>
+        <button type= "submit" class="button">Выйти</button>
     </sf:form>
 </div>
 <div align="left">
@@ -31,7 +31,7 @@
 
 
     <sf:form  action="/app" method="get">
-        <button type="submit" class="button">_EVENT LIST</button>
+        <button type="submit" class="button">EVENT LIST</button>
     </sf:form>
 
 
@@ -59,7 +59,7 @@
 
                 <sf:form action="/account" method="post">
                     <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-                    <button type= "submit" class="button">= Обновить =</button>
+                    <button type= "submit" class="button">Обновить</button>
                 </sf:form>
 
             <c:forEach items="${messages}" var="message">

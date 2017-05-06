@@ -61,11 +61,11 @@
   <c:if test = "${pageContext.request.remoteUser != null}" >
   Welcome! <c:out value="${pageContext.request.remoteUser}"/>
   <sf:form action="${contextPath}/logout" method="post">
-  <button type= "submit" class="button">===Выйти===</button>
+  <button type= "submit" class="button">Выйти</button>
   </sf:form>
       <sf:form action="/account" method="post">
           <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-          <button type= "submit" class="button">_Мой аккаунт</button>
+          <button type= "submit" class="button">Мой аккаунт</button>
       </sf:form>
   </c:if>
 
@@ -74,7 +74,7 @@
       <button type="submit" class="button">Регистрация</button>
     </sf:form>
       <sf:form class="form-inline" action="/login" method="get">
-      <button type= "submit" class="button">=== Вход ===</button>
+      <button type= "submit" class="button"> Вход </button>
     </sf:form>
   </c:if>
 
@@ -88,11 +88,11 @@
 
 
   <form  action="/addNote" method="get">
-    <button type="submit" class="button">= Добавить =</button>
+    <button type="submit" class="button"> Добавить </button>
   </form>
 
     <sf:form action="/map" method="post">
-        <button type= "submit" class="button">===Карта ===</button>
+        <button type= "submit" class="button">Карта </button>
     </sf:form>
  </div>
         </td></tr></table>
@@ -100,25 +100,25 @@
   <div align="left">
   <sf:form  action="/appSearchByDate" method="post">
     <div>
-      <button type="submit" class="button">=== Найти ==</button>
+      <button type="submit" class="button"> Найти </button>
       <input type="date" name="pattern" >
       </div>
   </sf:form>
   <sf:form  action="/appSearch" method="post">
     <div>
-      <button type="submit" class="button">=== Найти ==</button>
+      <button type="submit" class="button"> Найти </button>
       <input type="text" name="pattern" placeholder="Ключевые слова события">
       </div>
   </sf:form>
   <sf:form  action="/appSearchByLogin" method="post">
     <div>
-      <button type="submit" class="button">=== Найти ==</button>
+      <button type="submit" class="button"> Найти </button>
       <input type="text" name="pattern" placeholder="Логин пользователя">
       </div>
   </sf:form>
   <sf:form  action="/appSearchByAddress" method="post">
     <div>
-      <button type="submit" class="button">=== Найти ==</button>
+      <button type="submit" class="button"> Найти </button>
       <input type="text" name="pattern" placeholder="Поиск по адресу">
       </div>
   </sf:form>
