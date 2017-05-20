@@ -2,9 +2,12 @@ package place.to.time.configs;
 
 
 import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -20,22 +23,43 @@ import place.to.time.service.*;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import javax.sql.DataSource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @ComponentScan("place.to.time")
 @EnableWebMvc
 @EnableJpaRepositories(basePackages = "place.to.time.repository")
+@PropertySource("classpath:connectionToDataBase.properties")
 @EnableTransactionManagement
 public class AppConfig extends WebMvcConfigurerAdapter {
 
-   @Bean
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    @Autowired
+    private Environment env;
+
+
+    @Bean
     public DataSource dataSource() {
+
+        final String driverClassName = env.getProperty("driverClassName");
+        final String encoding = env.getProperty("encoding");
+        final String url = env.getProperty("url");
+        final String user = env.getProperty("name");
+        final String password = env.getProperty("password");
+
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        basicDataSource.setConnectionProperties("characterEncoding=UTF-8");
-        basicDataSource.setUrl("jdbc:mysql://localhost:3306/time_map");
-        basicDataSource.setUsername("root");
-        basicDataSource.setPassword("5464777");
+
+        basicDataSource.setDriverClassName(driverClassName);
+        basicDataSource.setConnectionProperties(encoding);
+        basicDataSource.setUrl(url);
+        basicDataSource.setUsername(user);
+        basicDataSource.setPassword(password);
+
         return basicDataSource;
     }
 
