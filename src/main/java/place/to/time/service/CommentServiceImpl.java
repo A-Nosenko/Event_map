@@ -16,7 +16,6 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> findCommentByNoteId(long noteId) {
-
         return commentRepository.findCommentByNoteId(noteId);
     }
 
@@ -44,5 +43,10 @@ public class CommentServiceImpl implements CommentService {
         long [] result = new long[i];
         for(int t = 0; t < result.length; t++){result[t] = commentList.get(t).getId();}
         return result;
+    }
+
+    @Override
+    public long commentCounter(long noteId) {
+        return commentRepository.findNumberOfCommentsByNoteId(noteId);
     }
 }

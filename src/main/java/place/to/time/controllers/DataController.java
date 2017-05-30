@@ -4,23 +4,23 @@ package place.to.time.controllers;
  * Created by ENTITY on 2/1/2017.
  */
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import place.to.time.application.FullNote;
 import place.to.time.uploaders.NoteUploader;
 import place.to.time.model.Note;
 import place.to.time.model.Photo;
 import place.to.time.service.*;
 import org.springframework.web.servlet.ModelAndView;
 import place.to.time.validation.PlaceValidator;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -42,7 +42,13 @@ public class DataController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/app")
     public ModelAndView app() {
-        ModelAndView modelAndView = new ModelAndView("app", "notes", noteService.findAllNotes());
+        List<FullNote> fullNoteList = new ArrayList<>();
+        List<Note> noteList = noteService.findAllNotes();
+        for(Note note : noteList){
+            fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
+        }
+
+        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
         modelAndView.addObject("photos", photoService.findAllPhotos());
         return modelAndView;
     }
@@ -50,7 +56,13 @@ public class DataController {
     @RequestMapping(method = RequestMethod.POST, value = "/appSearch")
         public ModelAndView appSearch(@RequestParam(value="pattern")String pattern) {
         String finalPattern = pattern.replace(" ", "%");
-        ModelAndView modelAndView = new ModelAndView("app", "notes", noteService.findNotes(finalPattern));
+        List<FullNote> fullNoteList = new ArrayList<>();
+        List<Note> noteList = noteService.findNotes(finalPattern);
+        for(Note note : noteList){
+            fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
+        }
+
+        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
         modelAndView.addObject("photos", photoService.findAllPhotos());
         return modelAndView;
     }
@@ -58,21 +70,39 @@ public class DataController {
     @RequestMapping(method = RequestMethod.POST, value = "/appSearchByLogin")
     public ModelAndView appSearchByLogin(@RequestParam(value="pattern")String pattern) {
         String finalPattern = pattern.replace(" ", "%");
-        ModelAndView modelAndView = new ModelAndView("app", "notes", noteService.findNotesByUserName(finalPattern));
+        List<FullNote> fullNoteList = new ArrayList<>();
+        List<Note> noteList = noteService.findNotesByUserName(finalPattern);
+        for(Note note : noteList){
+            fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
+        }
+
+        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
         modelAndView.addObject("photos", photoService.findAllPhotos());
         return modelAndView;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/appSearchByDate")
     public ModelAndView appSearchByDate(@RequestParam(value="pattern")String date) {
-        ModelAndView modelAndView = new ModelAndView("app", "notes", noteService.findNotesByDate(date));
+        List<FullNote> fullNoteList = new ArrayList<>();
+        List<Note> noteList = noteService.findNotesByDate(date);
+        for(Note note : noteList){
+            fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
+        }
+
+        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
         modelAndView.addObject("photos", photoService.findAllPhotos());
         return modelAndView;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/appSortByNoteTime")
-    public ModelAndView appSearchByNoteTime() {
-        ModelAndView modelAndView = new ModelAndView("app", "notes", noteService.sortNotesByLoadTime());
+    public ModelAndView appSortByNoteTime() {
+        List<FullNote> fullNoteList = new ArrayList<>();
+        List<Note> noteList = noteService.sortNotesByLoadTime();
+        for(Note note : noteList){
+            fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
+        }
+
+        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
         modelAndView.addObject("photos", photoService.findAllPhotos());
         return modelAndView;
     }
@@ -80,7 +110,13 @@ public class DataController {
     @RequestMapping(method = RequestMethod.POST, value = "/appSearchByAddress")
     public ModelAndView appSearchByAddress(@RequestParam(value="pattern")String pattern) {
         String finalPattern = pattern.replace(" ", "%");
-        ModelAndView modelAndView = new ModelAndView("app", "notes", noteService.findNotesByPlaceDescription(finalPattern));
+        List<FullNote> fullNoteList = new ArrayList<>();
+        List<Note> noteList = noteService.findNotesByPlaceDescription(finalPattern);
+        for(Note note : noteList){
+            fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
+        }
+
+        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
         modelAndView.addObject("photos", photoService.findAllPhotos());
         return modelAndView;
     }
@@ -160,7 +196,5 @@ public class DataController {
                    e.printStackTrace();
                  }
     }
-
-
 
 }

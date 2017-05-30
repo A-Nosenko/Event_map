@@ -138,58 +138,61 @@
     <td width="30%"> Фото </td>
     <td width="10%">     </td>
   </tr></thead>
-  <c:forEach items="${notes}" var="note">
+  <c:forEach items="${fullNoteList}" var="fullNote">
         <tr>
           <td> <div>
-              <img  alt = "image" width="100%"  src="/userImage/${note.userName}" />
-              ${note.userName}<br/>
-              <c:if test = "${pageContext.request.remoteUser != note.userName}" >
+              <img  alt = "image" width="100%"  src="/userImage/${fullNote.note.userName}" />
+              ${fullNote.note.userName}<br/>
+              <c:if test = "${pageContext.request.remoteUser != fullNote.note.userName}" >
               <sf:form action="/dialog" method="post">
                   <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
-                  <input type="hidden" name="userNameTo" value="${note.userName}"/>
+                  <input type="hidden" name="userNameTo" value="${fullNote.note.userName}"/>
                   <button type="submit" class="button">Сообщение</button>
               </sf:form>
               </c:if>
 
-             <fmt:formatDate value="${note.note_time}" pattern="dd-MM-yyyy HH:mm:ss" /> </div>
+             <fmt:formatDate value="${fullNote.note.note_time}" pattern="dd-MM-yyyy HH:mm:ss" /> </div>
 
           </td>
-          <td> <div style="height:207px; overflow:auto"><c:if test="${not empty note.latitude and not empty note.longitude}">
-            <a href = "https://www.google.com.ua/maps/place/@${note.latitude},${note.longitude},291m/data=!3m2!1e3!4b1!4m5!3m4!1s0x0:0x0!8m2!3d${note.latitude}!4d${note.longitude}" target = "_blank">
+          <td> <div style="height:207px; overflow:auto"><c:if test="${not empty fullNote.note.latitude and not empty fullNote.note.longitude}">
+            <a href = "https://www.google.com.ua/maps/place/@${fullNote.note.latitude},${fullNote.note.longitude},291m/data=!3m2!1e3!4b1!4m5!3m4!1s0x0:0x0!8m2!3d${fullNote.note.latitude}!4d${fullNote.note.longitude}" target = "_blank">
             <img alt = "== Map ==" align="middle" src = "resources/images/map.gif">
           </a></c:if></div> </td>
-          <td> <div style="height:207px; overflow:auto"> ${note.date}</div> </td>
-          <td> <div style="height:207px; overflow:auto"> ${note.placeDescription}</div> </td>
+          <td> <div style="height:207px; overflow:auto"> ${fullNote.note.date}</div> </td>
+          <td> <div style="height:207px; overflow:auto"> ${fullNote.note.placeDescription}</div> </td>
            <td>
 
+
+                 Комментариев: ${fullNote.commentCount} 
+
         <sf:form action="comments" method="get">
-          <input type = "hidden" name = "noteId" value="${note.id}">
+          <input type = "hidden" name = "noteId" value="${fullNote.note.id}">
           <button type="submit" class="button">Просмотр | Комментарии</button>
         </sf:form>
-            <div style="height:207px; overflow:auto"> ${note.action} </div> </td>
+            <div style="height:207px; overflow:auto"> ${fullNote.note.action} </div> </td>
           <td><div style="height:207px; overflow:auto">
           <c:forEach items="${photos}" var="photo">
-          <c:if test="${note.id == photo.noteId}">
+          <c:if test="${fullNote.note.id == photo.noteId}">
           <a href = "/image/${photo.id}" title = "рисунок" target = "_blank" > <img  alt = "image" height = "100"  src="/image/${photo.id}" /></a>
           </c:if>
           </c:forEach>
           </div></td>
           <td>
-           <c:if test="${pageContext.request.remoteUser == note.userName}">
+           <c:if test="${pageContext.request.remoteUser == fullNote.note.userName}">
           <sf:form  action="/delete" method="post">
-            <input type = "hidden" name = "id" value="${note.id}">
+            <input type = "hidden" name = "id" value="${fullNote.note.id}">
             <button type="submit" class="button">Удалить</button>
             </sf:form>
           </c:if>
 
               <security:authorize access = "hasRole('ROLE_ADMIN')">
                   <sf:form  action="/delete" method="post">
-                      <input type = "hidden" name = "id" value="${note.id}">
+                      <input type = "hidden" name = "id" value="${fullNote.note.id}">
                       <button type="submit" class="button">Удалить</button>
                   </sf:form>
               </security:authorize>
 
-          <c:if test="${pageContext.request.remoteUser == note.userName}">
+          <c:if test="${pageContext.request.remoteUser == fullNote.note.userName}">
             <sf:form action="noteViewAndAlter" method="get">
             <input type = "hidden" name = "id" value="${note.id}">
             <button type="submit" class="button">Править</button>

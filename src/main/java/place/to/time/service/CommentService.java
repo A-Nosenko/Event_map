@@ -9,6 +9,7 @@ import java.util.List;
  */
 public interface CommentService {
 
+    long commentCounter(long noteId);
     List<Comment> findCommentByNoteId(long noteId);
     void save(Comment comment);
     void delete(long id);
