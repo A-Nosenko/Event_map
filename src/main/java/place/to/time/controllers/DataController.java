@@ -183,7 +183,15 @@ public class DataController {
             noteService.delete(id);
         }
 
-        return new ModelAndView("app", "notes", noteService.findAllNotes());
+        List<FullNote> fullNoteList = new ArrayList<>();
+        List<Note> noteList = noteService.findAllNotes();
+        for(Note note : noteList){
+            fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
+        }
+
+        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
+        modelAndView.addObject("photos", photoService.findAllPhotos());
+        return modelAndView;
     }
 
     @RequestMapping("/image/{id}")

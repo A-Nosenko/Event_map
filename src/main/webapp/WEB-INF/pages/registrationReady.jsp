@@ -21,14 +21,14 @@
 </div>
 <div align="center">
 
-    <h1>Добро пожаловать, <security:authentication property="principal.username"/> !!!</h1>
+    <h1>You are welcome!  <security:authentication property="principal.username"/> !!!</h1>
 
 <form  action="/app" method="get">
     <button type="submit" class="button">EVENT LIST</button>
 </form>
             <sf:form action="/account" method="post">
                 <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-            <button type= "submit" class="button">Мой аккаунт</button>
+            <button type= "submit" class="button"> My account </button>
         </sf:form>
     </div>
 

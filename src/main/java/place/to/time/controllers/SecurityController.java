@@ -34,7 +34,7 @@ public class SecurityController {
 
         modelMap.put("user", user);
         if (error != null) {
-            model.addAttribute("error", "Неверный логин или пароль.");
+            model.addAttribute("error", "Wrong login or password.");
         }
           return "login";
     }

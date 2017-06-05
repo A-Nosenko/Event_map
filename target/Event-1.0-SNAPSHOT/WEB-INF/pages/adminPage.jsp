@@ -46,7 +46,7 @@
         <sf:form action="/dialog" method="post">
           <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
           <input type="hidden" name="userNameTo" value="${user.login}"/>
-          <button type="submit" class="button">Сообщение</button>
+          <button type="submit" class="button">Message</button>
         </sf:form>
       </c:if>
     </td>

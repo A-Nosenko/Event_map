@@ -33,7 +33,7 @@
     <button type="submit" class="button">EVENT LIST</button>
   </form>
     <form  action="/register" method="get">
-    <button type="submit" class="button">Регистрация</button>
+    <button type="submit" class="button">Registration</button>
   </form>
 </div>
 </c:if>
@@ -46,7 +46,7 @@
     </form>
     <sf:form action="/account" method="post">
       <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-      <button type= "submit" class="button">Мой аккаунт</button>
+      <button type= "submit" class="button">My account</button>
     </sf:form>
   </c:if>
 
@@ -62,8 +62,8 @@
   <span class="error">${error}</span><br/>
   <c:if test = "${pageContext.request.remoteUser == null}">
     <input id="remember_me" name="remember-me" type="checkbox"/>
-    <label for = "remember_me">Запомнить меня</label><br/><br/>
-    <button type="submit" class="button"> Вход </button></c:if>
+    <label for = "remember_me">Remember me</label><br/><br/>
+    <button type="submit" class="button"> Sign in </button></c:if>
 </sf:form>
 </div>
 

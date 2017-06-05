@@ -34,7 +34,7 @@
       <c:if test = "${pageContext.request.remoteUser != null}" >
         <sf:form action="/account" method="post">
           <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-        <button type= "submit" class="button">Мой аккаунт</button>
+        <button type= "submit" class="button">My account</button>
         </sf:form>
       </c:if>
 
@@ -45,10 +45,10 @@
   <thead><tr>
     <td width="10%">  </td>
     <td width="5%">   </td>
-    <td width="10%"> Дата </td>
-    <td width="10%"> Адрес </td>
-    <td width="25%"> Событие </td>
-    <td width="30%"> Фото </td>
+    <td width="10%"> Date </td>
+    <td width="10%"> Address </td>
+    <td width="25%"> Event </td>
+    <td width="30%"> Photo </td>
     <td width="10%">     </td>
   </tr></thead>
       <tr>
@@ -60,7 +60,7 @@
               <sf:form action="/dialog" method="post">
                 <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
                 <input type="hidden" name="userNameTo" value="${note.userName}"/>
-                <button type="submit" class="button">Сообщение</button>
+                <button type="submit" class="button">Message</button>
               </sf:form>
             </c:if>
             <fmt:formatDate value="${note.note_time}" pattern="dd-MM-yyyy HH:mm:ss" /></div>
@@ -71,28 +71,28 @@
           </a></c:if> </td><td> ${note.date} </td><td> ${note.placeDescription} </td><td> ${note.action} </td>
       <td>
         <c:forEach items="${photos}" var="photo">
-           <a href = "/image/${photo.id}" title = "рисунок" target = "_blank" > <img  alt = "image" height = "100"  src="/image/${photo.id}" /></a>
+           <a href = "/image/${photo.id}" title = "image" target = "_blank" > <img  alt = "image" height = "100"  src="/image/${photo.id}" /></a>
            </c:forEach>
       </td>
       <td>
         <c:if test="${pageContext.request.remoteUser == note.userName}">
           <sf:form  action="/delete" method="post">
             <input type = "hidden" name = "id" value="${note.id}">
-            <button type="submit" class="button">Удалить</button>
+            <button type="submit" class="button">Delete</button>
           </sf:form>
         </c:if>
 
         <security:authorize access = "hasRole('ROLE_ADMIN')">
           <sf:form  action="/delete" method="post">
             <input type = "hidden" name = "id" value="${note.id}">
-            <button type="submit" class="button">Удалить</button>
+            <button type="submit" class="button">Delete</button>
           </sf:form>
         </security:authorize>
 
         <c:if test="${pageContext.request.remoteUser == note.userName}">
           <sf:form action="noteViewAndAlter" method="get">
             <input type = "hidden" name = "id" value="${note.id}">
-            <button type="submit" class="button">Править</button>
+            <button type="submit" class="button">Correct</button>
           </sf:form>
         </c:if>
 
@@ -100,15 +100,15 @@
   </table>
 
 
-<h1>Комментарии:</h1>
+<h1>Comments:</h1>
 
-<table align = "left" width = "95%">
+<table align = "left" width = "100%">
   <thead>
     <tr>
       <td width="10%">   </td>
       <td width="5%">   </td>
       <td width="75%">   </td>
-      <td width="5%">    </td></tr>
+      <td width="10%">    </td></tr>
   </thead>
 <c:forEach items="${commentList}" var="comment">
 
@@ -121,7 +121,7 @@
           <sf:form action="/dialog" method="post">
             <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
             <input type="hidden" name="userNameTo" value="${comment.userName}"/>
-            <button type="submit" class="button">Сообщение</button>
+            <button type="submit" class="button"> Message </button>
           </sf:form>
         </c:if>
         <fmt:formatDate value="${comment.time}" pattern="dd-MM-yyyy HH:mm:ss" />
@@ -131,7 +131,7 @@
         ${comment.comment}<br/>
       <c:forEach items="${commentPhotos}" var="commentPhoto">
         <c:if test="${comment.id == commentPhoto.commentId}">
-          <a href = "/commentImage/${commentPhoto.id}" title = "рисунок" target = "_blank" > <img  alt = "commentImage" height = "100"  src="/commentImage/${commentPhoto.id}" /></a>
+          <a href = "/commentImage/${commentPhoto.id}" title = "image" target = "_blank" > <img  alt = "commentImage" height = "100"  src="/commentImage/${commentPhoto.id}" /></a>
         </c:if>
       </c:forEach>
              </td>
@@ -141,7 +141,7 @@
         <sf:form  action="/deleteComment" method="post">
           <input type = "hidden" name = "commentId" value="${comment.id}">
           <input type = "hidden" name = "noteId" value="${note.id}">
-          <button type="submit" class="button">Удалить</button>
+          <button type="submit" class="button">Delete</button>
         </sf:form>
       </c:if>
 
@@ -149,7 +149,7 @@
         <sf:form  action="/deleteComment" method="post">
           <input type = "hidden" name = "commentId" value="${comment.id}">
           <input type = "hidden" name = "noteId" value="${note.id}">
-          <button type="submit" class="button">Удалить</button>
+          <button type="submit" class="button">Delete</button>
         </sf:form>
       </security:authorize>
 
@@ -157,8 +157,9 @@
     </td></tr>
     </c:forEach>
 </table>
+<br/>
 
-<h2>Добавить комментарий:</h2><br/>
+<h2> Add comment:</h2><br/>
 
 <sf:form enctype="multipart/form-data" modelAttribute="commentUploader" action="/addComment" method="post">
 
@@ -166,13 +167,13 @@
   <input type="hidden" name="noteId" value="${note.id}"/>
   <textarea cols="100" rows="3" name="comment"></textarea>
   <br/>
-  <h2>Прикрепить фотографии:</h2><br/>
-  <div>Фото 1:  <input type="file" name="files[0]" /></div>
-  <div>Фото 2:  <input type="file" name="files[1]" /></div>
-  <div>Фото 3:  <input type="file" name="files[2]" /></div>
-  <div>Фото 4:  <input type="file" name="files[3]" /></div>
-  <div>Фото 5:  <input type="file" name="files[4]" /></div>
-  <button type="submit" class="button">Добавить</button>
+  <h2>Add photos:</h2><br/>
+  <div>Photo 1:  <input type="file" name="files[0]" /></div>
+  <div>Photo 2:  <input type="file" name="files[1]" /></div>
+  <div>Photo 3:  <input type="file" name="files[2]" /></div>
+  <div>Photo 4:  <input type="file" name="files[3]" /></div>
+  <div>Photo 5:  <input type="file" name="files[4]" /></div>
+  <button type="submit" class="button"> Save </button>
   </sf:form>
 
 </body>

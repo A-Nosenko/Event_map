@@ -34,29 +34,29 @@ public class RegistrationValidator implements Validator {
     @Override
     public void validate(Object object, Errors errors){
         User user = (User)object;
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "login.empty", "Введите логин");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "login.empty", "Enter login");
           if(!loginCorrect(user.getLogin())) {
-            errors.rejectValue("login", "login.incorrect", "Логин должен состоять из буквенных или цифровых знаков или знака подчеркивания, 3 - 100 знаков ");
+            errors.rejectValue("login", "login.incorrect", "The login must consist of alphabetic or numeric characters or an underscore, 3 - 100 characters ");
             }
 
          if(userService.findByLogin(user.getLogin()) != null) {
-           errors.rejectValue("login", "login.alreadyExists", "Такой логин уже существует");
+           errors.rejectValue("login", "login.alreadyExists", "This login already exists");
           }
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "password.empty", "Пароль не может быть пустым");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "password.empty", "Password cannot be empty");
         if(!(user.getPassword()).equals(user.getRepeatedPassword())){
-            errors.rejectValue("repeatedPassword", "repeatedPassword.passwordDon'tMatch", "Пароли не совпадают");
+            errors.rejectValue("repeatedPassword", "repeatedPassword.passwordDon'tMatch", "Passwords do not match");
         }
         if((user.getPassword().length()) < 4 && (user.getPassword().trim().length()) > 0 ) {
-            errors.rejectValue("password", "password.tooShort", "Слишком короткий пароль, минимальная длина пароля - 4 символа");
+            errors.rejectValue("password", "password.tooShort", "The password is too short, the minimum password length is 4 characters");
         }
 
         if((user.getEmail().trim().length() != 0) && !EmailValidator.getInstance().isValid(user.getEmail())){
-            errors.rejectValue("email", "email.notValid", "Введите корректный email, или оставьте поле пустым");
+            errors.rejectValue("email", "email.notValid", "Enter the correct email, or leave the field blank");
         }
 
         if((user.getEmail().trim().length() != 0) && userService.findByEmail(user.getEmail()) != null){
-            errors.rejectValue("email", "email.alreadyExists", "Этот адрес уже используется");
+            errors.rejectValue("email", "email.alreadyExists", "This address is already in use");
         }
     }
 }

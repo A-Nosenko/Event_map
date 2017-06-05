@@ -20,7 +20,7 @@
 
 <div align="right">
     <sf:form action="${contextPath}/logout" method="post">
-        <button type= "submit" class="button">Выйти</button>
+        <button type= "submit" class="button">Exit</button>
     </sf:form>
 </div>
 <div align="left">
@@ -49,17 +49,17 @@
             <sf:form enctype="multipart/form-data" modelAttribute="accountUploader" method="post" action="/setAccount">
                 <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
                  <br/> <input type="file" name="file" />
-                <button type="submit" class="button">Загрузить</button>
+                <button type="submit" class="button">Upload</button>
         </sf:form>
         </div>
     </td>
         <td width="80%">
             <div align="left">
-            <h2>Сообщения:</h2>
+            <h2>Messages:</h2>
 
                 <sf:form action="/account" method="post">
                     <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-                    <button type= "submit" class="button">Обновить</button>
+                    <button type= "submit" class="button">Refresh</button>
                 </sf:form>
 
             <c:forEach items="${messages}" var="message">
@@ -67,9 +67,9 @@
     <tr>
         <td width="35%"><div>
             <c:if test="${message.userNameTo == pageContext.request.remoteUser}">
-            Получено от  ${message.userNameFrom}<br/></c:if>
+                Received from  ${message.userNameFrom}<br/></c:if>
             <c:if test="${message.userNameFrom == pageContext.request.remoteUser}">
-            Отправлено пользователю  ${message.userNameTo}<br/></c:if>
+                Sent to user  ${message.userNameTo}<br/></c:if>
             <fmt:formatDate value="${message.messageTime}" pattern="dd-MM-yyyy HH:mm:ss" />
         </div></td>
         <td width="15%">
@@ -79,7 +79,7 @@
                     <input type="hidden" name="userNameTo" value="${message.userNameFrom}"/></c:if>
                 <c:if test="${message.userNameFrom == pageContext.request.remoteUser}">
                     <input type="hidden" name="userNameTo" value="${message.userNameTo}"/></c:if>
-                <button type="submit" class="button">К диалогу</button>
+                <button type="submit" class="button">To dialog</button>
             </sf:form>
         </td>
         <td width="50%"><div>

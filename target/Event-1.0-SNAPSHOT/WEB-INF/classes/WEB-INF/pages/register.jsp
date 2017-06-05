@@ -32,19 +32,19 @@
 <sf:form modelAttribute="user" method="post">
   <table>
     <tr>
-      <td><br/>*Логин:<br/></td>
+      <td><br/>*Login:<br/></td>
       <td><br/><sf:input path="login"/></td>
       <td><br/><span class="error"><sf:errors path="login" /></span></td>
     </tr>
 
     <tr>
-      <td><br/>*Пароль:<br/></td>
+      <td><br/>*Password:<br/></td>
       <td><br/><sf:password path="password" /></td>
       <td><br/><span class="error"><sf:errors path="password" /></span></td>
       </tr>
 
     <tr>
-      <td><br/>*Повторите пароль:<br/></td>
+      <td><br/>*Repeated password:<br/></td>
       <td><br/><sf:password path="repeatedPassword" /></td>
       <td><br/><span class="error"><sf:errors
               path="repeatedPassword" /></span></td>
@@ -59,13 +59,13 @@
     <tr>
       <td colspan="3"><br/>
         <input id="remember_me" name="remember-me" type="checkbox"/>
-        <label for = "remember_me">Запомнить меня</label><br/>
-        <br/><button value="submit" class="button">Зарегестрироваться</button>
+        <label for = "remember_me">Remember me</label><br/>
+        <br/><button value="submit" class="button"> Confirm </button>
       </td>
     </tr>
     <tr>
       <td colspan="3">
-        <br/> * Поля, обязательные к заполнению.
+        <br/> * Required fields.
       </td>
     </tr>
 

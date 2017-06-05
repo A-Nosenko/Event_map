@@ -31,34 +31,34 @@
     <c:if test = "${pageContext.request.remoteUser != null}" >
       <sf:form action="/account" method="post">
         <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-        <button type= "submit" class="button">Мой аккаунт</button>
+        <button type= "submit" class="button">My account</button>
       </sf:form>
     </c:if>
   </div>
   <sf:form enctype="multipart/form-data" modelAttribute="noteUploader" action="/addNote" method="post">
-  <div><h3> Заполните форму: </h3></div>
+  <div><h3> Fill the form: </h3></div>
 
     <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-    <div> Координаты: <br/>Широта <input type="text" name="latitude" placeholder="от -90 до 90"><br/>
-                           Долгота <input type="text" name="longitude" placeholder="от -180 до 180"></div>
+    <div> Coordinates: <br/>Latitude ..... <input type="text" name="latitude" placeholder="от -90 до 90"><br/>
+                            Longitude .. <input type="text" name="longitude" placeholder="от -180 до 180"></div>
     <br/>
-    Для широты используйте значения в диапазоне от -90 до 90.<br/>
-    Долготу указывайте в диапазоне от -180 до 180.<br/><br/>
-    <div> Адрес или описание места: <br/> <textarea cols="100" rows="3" name="placeDescription"></textarea></div>
+    For latitude, use values ranging from -90 to 90.<br/>
+    Longitude should be between -180 and 180.<br/><br/>
+    <div> Address or description of the place: <br/> <textarea cols="100" rows="3" name="placeDescription"></textarea></div>
     <br/>
-    <div> Дата: <br/> <input type="date" name="date"></div>
+    <div> Date: <br/> <input type="date" name="date"></div>
     <br/>
-    <div> Событие: <br/> <textarea cols="100" rows="10" name="action"></textarea></div>
+    <div> Event: <br/> <textarea cols="100" rows="10" name="action"></textarea></div>
     <br/>
 
-    <div>Фото 1:  <input type="file" name="files[0]" /></div>
-    <div>Фото 2:  <input type="file" name="files[1]" /></div>
-    <div>Фото 3:  <input type="file" name="files[2]" /></div>
-    <div>Фото 4:  <input type="file" name="files[3]" /></div>
-    <div>Фото 5:  <input type="file" name="files[4]" /></div>
+    <div>Photo 1:  <input type="file" name="files[0]" /></div>
+    <div>Photo 2:  <input type="file" name="files[1]" /></div>
+    <div>Photo 3:  <input type="file" name="files[2]" /></div>
+    <div>Photo 4:  <input type="file" name="files[3]" /></div>
+    <div>Photo 5:  <input type="file" name="files[4]" /></div>
 
 
-  <div><button type="submit" class="button">Опубликовать</button></div>
+  <div><button type="submit" class="button">Publish</button></div>
   </sf:form>
 
 </body>

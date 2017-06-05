@@ -31,7 +31,7 @@
 <div align="right">
   <sf:form action="/account" method="post">
     <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-    <button type= "submit" class="button">Мой аккаунт</button>
+    <button type= "submit" class="button">My account</button>
   </sf:form>
 
   <sf:form  action="/app" method="get">
@@ -42,16 +42,16 @@
 <sf:form action="/dialog" method="post">
   <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
   <input type="hidden" name="userNameTo" value="${userNameTo}"/>
-  <button type="submit" class="button"> Обновить </button>
+  <button type="submit" class="button"> Refresh </button>
 </sf:form>
 
-<h2>Ваш логин: ${pageContext.request.remoteUser}</h2>
+<h2>Your login: ${pageContext.request.remoteUser}</h2>
 
 <sf:form modelAttribute="message" method="post" action="/addMessage">
   <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}">
   <input type="hidden" name="userNameTo" value="${userNameTo}">
-  Сообщение: <br/> <textarea cols="100" rows="5" name="messageText"></textarea>
-  <div align="center"><button type="submit" class="button">Отправить</button></div>
+  Message: <br/> <textarea cols="100" rows="5" name="messageText"></textarea>
+  <div align="center"><button type="submit" class="button">Send</button></div>
 </sf:form>
 
 <c:forEach items="${messages}" var="message">
@@ -68,7 +68,7 @@
         <input type = "hidden" name = "id" value="${message.id}">
         <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}">
         <input type="hidden" name="userNameTo" value="${userNameTo}">
-        <button type="submit" class="button">Удалить</button>
+        <button type="submit" class="button">Delete</button>
       </sf:form>
     </td>
     <td width="60%"><div>
@@ -89,7 +89,7 @@
             <input type = "hidden" name = "id" value="${message.id}">
             <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}">
             <input type="hidden" name="userNameTo" value="${userNameTo}">
-            <button type="submit" class="button">Удалить</button>
+            <button type="submit" class="button">Delete</button>
           </sf:form>
         </td>
          <td width="20%"><div>

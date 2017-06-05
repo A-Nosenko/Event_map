@@ -34,7 +34,7 @@ public class NoteController {
         modelAndView.addObject("photos", photoService.findPhotoByNoteId(id));
         modelAndView.addObject("noteUploader", new NoteUploader());
         if(noteService.findById(id).getLatitude() == null || noteService.findById(id).getLongitude() == null){
-            modelAndView.addObject("error", "Координаты заданы некорректно");
+            modelAndView.addObject("error", "Coordinates are set incorrectly");
         }
         return modelAndView;
     }

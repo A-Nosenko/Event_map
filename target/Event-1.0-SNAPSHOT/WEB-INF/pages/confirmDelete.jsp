@@ -24,21 +24,21 @@
   <br/>
   <br/>
   <br/>
-  <h2> Тема будет полностью удалена, включая комментарии и фото! </h2>
+  <h2> The theme will be completely deleted, including comments and photos! </h2>
   <br/>
   <br/>
 
   <div align="center">
 
     <sf:form  action="/app" method="get">
-      <button type="submit" class="button">Отмена</button>
+      <button type="submit" class="button">Cancel</button>
     </sf:form>
   </div>
   <br/>
   <br/>
   <sf:form  action="/deleteTrue" method="post">
     <input type = "hidden" name = "id" value="${id}">
-    <button type="submit" class="button">Продолжить</button>
+    <button type="submit" class="button">Continue</button>
   </sf:form>
 
 </div>

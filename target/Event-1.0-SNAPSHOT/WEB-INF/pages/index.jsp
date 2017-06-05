@@ -14,8 +14,8 @@
 
 <html>
 <head>
-    <META NAME="description" CONTENT="Данный сайт содержит информацию для велосипедистов">
-    <META NAME="keywords" CONTENT="информация, велосипедист, событие, ДТП, event, bicycle, поиск, вело, велосипед">
+    <META NAME="description" CONTENT="This site contains information for bicyclists">
+    <META NAME="keywords" CONTENT="Information, bicyclist, event, road accident, bicycle, search, bike">
     <META NAME="Document-state" CONTENT="Dynamic">
     <META NAME="AUTHOR" CONTENT="A-Nosenko">
     <title>==EVENT_MAP==</title>
@@ -36,24 +36,24 @@
 <div align="right">
 
 <sf:form  action="/register" method="get">
-    <button type="submit" class="button">Регистрация</button>
+    <button type="submit" class="button">Registration</button>
 </sf:form>
 
     <br/>
     <c:if test = "${pageContext.request.remoteUser != null}" >
-       Ваш логин:  <c:out value="${pageContext.request.remoteUser}       "/>
+       Your login:  <c:out value="${pageContext.request.remoteUser}       "/>
     <sf:form action="/logout" method="post">
-        <button type= "submit" class="button">Выйти</button>
+        <button type= "submit" class="button"> Exit </button>
     </sf:form>
         <sf:form action="/account" method="post">
             <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-        <button type= "submit" class="button">Мой аккаунт</button>
+        <button type= "submit" class="button">My account</button>
         </sf:form>
     </c:if>
 
     <c:if test = "${pageContext.request.remoteUser == null}" >
             <sf:form action="/login" method="get">
-            <button type= "submit" class="button"> Вход </button>
+            <button type= "submit" class="button"> Login </button>
         </sf:form>
     </c:if>
 
@@ -68,7 +68,7 @@
     </security:authorize>
 
     <sf:form action="/map" method="post">
-         <button type= "submit" class="button">Карта</button>
+         <button type= "submit" class="button">EVENT MAP</button>
     </sf:form>
 
     <br/>

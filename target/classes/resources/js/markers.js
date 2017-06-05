@@ -36,7 +36,7 @@ function createMarker(map, title) {
 
 function infoWindow(map, marker, title, address = "Adress", url = "/comments?noteId=" + markers[title].id) {
     google.maps.event.addListener(marker, 'click', () => {
-        const html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href='" + url + "'>Просмотр события</a></p></div>";
+        const html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href='" + url + "'>Event view</a></p></div>";
 
     const iw = new google.maps.InfoWindow({
         content: html,

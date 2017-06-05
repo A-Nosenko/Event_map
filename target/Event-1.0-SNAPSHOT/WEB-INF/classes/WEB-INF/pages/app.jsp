@@ -31,27 +31,29 @@
         <c:if test = "${pageContext.request.remoteUser == null}" >
         <h2>
 
-                    <li>Вы можете просматривать описание событий, выполнять поиск по ключевым словам,
-            логину автора или дате события.</li>
-                    <li>Для публикации своих записей и комментариев Вам необходимо зарегистрироваться на сайте.</li>
-                    <li>Администрация сайта не несет ответственности за размещенную пользователями информацию.</li>
+                    <li>You can view the description of events,
+                        search by keyword, author's login or event date.</li>
+                    <li>To publish your notes and comments you need to register on the site.</li>
+                    <li>The administration of the site is not responsible for the information
+                        posted by users.</li>
         </h2>
         </c:if>
 
         <c:if test = "${pageContext.request.remoteUser != null}" >
             <h2>
 
-                <li>Вы можете просматривать описание событий, выполнять поиск по ключевым словам,
-                    логину автора или дате события.</li>
-                <li>Администрация сайта не несет ответственности за размещенную пользователями информацию.</li>
+                <li>You can view the description of events,
+                    search by keyword, author's login or event date.</li>
+                <li>The administration of the site is not responsible for the information
+                    posted by users.</li>
 
             </h2>
 
              <sf:form action="/dialog" method="post">
-        <li>Если у Вас есть вопросы, пожелания, напишите</li>
+        <li>If you have any questions, wishes, write please</li>
                     <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
                     <input type="hidden" name="userNameTo" value="Admin"/>
-                    <button type="submit" class="button">Администратору</button>
+                    <button type="submit" class="button">To admin</button>
                 </sf:form>
 
         </c:if>
@@ -61,38 +63,38 @@
   <c:if test = "${pageContext.request.remoteUser != null}" >
   Welcome! <c:out value="${pageContext.request.remoteUser}"/>
   <sf:form action="${contextPath}/logout" method="post">
-  <button type= "submit" class="button">Выйти</button>
+  <button type= "submit" class="button">Exit</button>
   </sf:form>
       <sf:form action="/account" method="post">
           <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-          <button type= "submit" class="button">Мой аккаунт</button>
+          <button type= "submit" class="button">My account</button>
       </sf:form>
   </c:if>
 
   <c:if test = "${pageContext.request.remoteUser == null}" >
     <sf:form  action="/register" method="get">
-      <button type="submit" class="button">Регистрация</button>
+      <button type="submit" class="button">Registration</button>
     </sf:form>
       <sf:form class="form-inline" action="/login" method="get">
-      <button type= "submit" class="button"> Вход </button>
+      <button type= "submit" class="button"> Login </button>
     </sf:form>
   </c:if>
 
   <form  action="/app" method="get">
-   По порядку даты события  <button type="submit" class="button">Показать все</button>
+      In the order of the date of the event  <button type="submit" class="button">Show all</button>
   </form>
 
   <form  action="/appSortByNoteTime" method="get">
-   По порядку публикации <button type="submit" class="button">Показать все</button>
+      In order of publication <button type="submit" class="button">Show all</button>
   </form>
 
 
   <form  action="/addNote" method="get">
-    <button type="submit" class="button"> Добавить </button>
+    <button type="submit" class="button"> Add new event </button>
   </form>
 
     <sf:form action="/map" method="post">
-        <button type= "submit" class="button">Карта </button>
+        <button type= "submit" class="button"> Look at map </button>
     </sf:form>
  </div>
         </td></tr></table>
@@ -100,26 +102,26 @@
   <div align="left">
   <sf:form  action="/appSearchByDate" method="post">
     <div>
-      <button type="submit" class="button"> Найти </button>
+      <button type="submit" class="button"> Search </button>
       <input type="date" name="pattern" >
       </div>
   </sf:form>
   <sf:form  action="/appSearch" method="post">
     <div>
-      <button type="submit" class="button"> Найти </button>
-      <input type="text" name="pattern" placeholder="Ключевые слова события">
+      <button type="submit" class="button"> Search </button>
+      <input type="text" name="pattern" placeholder="Event keywords">
       </div>
   </sf:form>
   <sf:form  action="/appSearchByLogin" method="post">
     <div>
-      <button type="submit" class="button"> Найти </button>
-      <input type="text" name="pattern" placeholder="Логин пользователя">
+      <button type="submit" class="button"> Search </button>
+      <input type="text" name="pattern" placeholder="User login">
       </div>
   </sf:form>
   <sf:form  action="/appSearchByAddress" method="post">
     <div>
-      <button type="submit" class="button"> Найти </button>
-      <input type="text" name="pattern" placeholder="Поиск по адресу">
+      <button type="submit" class="button"> Search </button>
+      <input type="text" name="pattern" placeholder="Search by address">
       </div>
   </sf:form>
 
@@ -132,10 +134,10 @@
   <thead><tr>
     <td width="10%">    </td>
     <td width="5%">   </td>
-    <td width="10%"> Дата </td>
-    <td width="10%"> Адрес </td>
-    <td width="25%"> Событие </td>
-    <td width="30%"> Фото </td>
+    <td width="10%"> Date </td>
+    <td width="10%"> Address </td>
+    <td width="25%"> Event </td>
+    <td width="30%"> Photo </td>
     <td width="10%">     </td>
   </tr></thead>
   <c:forEach items="${fullNoteList}" var="fullNote">
@@ -147,7 +149,7 @@
               <sf:form action="/dialog" method="post">
                   <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
                   <input type="hidden" name="userNameTo" value="${fullNote.note.userName}"/>
-                  <button type="submit" class="button">Сообщение</button>
+                  <button type="submit" class="button">Message</button>
               </sf:form>
               </c:if>
 
@@ -163,17 +165,17 @@
            <td>
 
 
-                 Комментариев: ${fullNote.commentCount} 
+                 Comments: ${fullNote.commentCount}
 
         <sf:form action="comments" method="get">
           <input type = "hidden" name = "noteId" value="${fullNote.note.id}">
-          <button type="submit" class="button">Просмотр | Комментарии</button>
+          <button type="submit" class="button"> View | Comments</button>
         </sf:form>
             <div style="height:207px; overflow:auto"> ${fullNote.note.action} </div> </td>
           <td><div style="height:207px; overflow:auto">
           <c:forEach items="${photos}" var="photo">
           <c:if test="${fullNote.note.id == photo.noteId}">
-          <a href = "/image/${photo.id}" title = "рисунок" target = "_blank" > <img  alt = "image" height = "100"  src="/image/${photo.id}" /></a>
+          <a href = "/image/${photo.id}" title = "image" target = "_blank" > <img  alt = "image" height = "100"  src="/image/${photo.id}" /></a>
           </c:if>
           </c:forEach>
           </div></td>
@@ -181,21 +183,21 @@
            <c:if test="${pageContext.request.remoteUser == fullNote.note.userName}">
           <sf:form  action="/delete" method="post">
             <input type = "hidden" name = "id" value="${fullNote.note.id}">
-            <button type="submit" class="button">Удалить</button>
+            <button type="submit" class="button">Delete</button>
             </sf:form>
           </c:if>
 
               <security:authorize access = "hasRole('ROLE_ADMIN')">
                   <sf:form  action="/delete" method="post">
                       <input type = "hidden" name = "id" value="${fullNote.note.id}">
-                      <button type="submit" class="button">Удалить</button>
+                      <button type="submit" class="button">Delete</button>
                   </sf:form>
               </security:authorize>
 
           <c:if test="${pageContext.request.remoteUser == fullNote.note.userName}">
             <sf:form action="noteViewAndAlter" method="get">
-            <input type = "hidden" name = "id" value="${note.id}">
-            <button type="submit" class="button">Править</button>
+            <input type = "hidden" name = "id" value="${fullNote.note.id}">
+            <button type="submit" class="button">Correct</button>
           </sf:form>
           </c:if>
         </td></tr>
