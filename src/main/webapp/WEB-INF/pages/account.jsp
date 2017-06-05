@@ -38,7 +38,7 @@
 
 </div>
 
-<h2>Ваш логин: ${pageContext.request.remoteUser}</h2>
+<h2>Your login: ${pageContext.request.remoteUser}</h2>
 <br/>
 <table width="100%">
     <tr><td width="20%">
