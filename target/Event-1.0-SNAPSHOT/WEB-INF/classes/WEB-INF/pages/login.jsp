@@ -40,7 +40,7 @@
 <div align="center">
 
   <c:if test = "${pageContext.request.remoteUser != null}">
-    <h3>Добро пожаловать!  <c:out value="${pageContext.request.remoteUser}"></c:out></h3><br/>
+    <h3> You are welcome!  <c:out value="${pageContext.request.remoteUser}"></c:out></h3><br/>
     <form  action="/app" method="get">
       <button type="submit" class="button">EVENT LIST</button>
     </form>
