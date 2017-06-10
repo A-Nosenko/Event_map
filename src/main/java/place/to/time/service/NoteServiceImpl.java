@@ -59,4 +59,9 @@ public class NoteServiceImpl implements NoteService {
     public List<Note> sortNotesByLoadTime (){
        return noteRepository.sortNotesByLoadTime();
     }
+
+    @Override
+    public List<Long> getIdlist() {
+        return noteRepository.findAllNotesId();
+    }
 }

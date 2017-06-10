@@ -124,11 +124,18 @@
       <input type="text" name="pattern" placeholder="Search by address">
       </div>
   </sf:form>
-
-
-
   </div>
 
+    <div align="center">
+        <c:if test="${flagPrev}">
+            <sf:form action="/app" method="post">
+                <input type="hidden" name="isNext" value="false">
+                <input type="hidden" name="count" value="${count}">
+                <input type="hidden" name="counter" value="${counter}">
+                <button type="submit" class="button"> SHOW PREVIOUS </button>
+            </sf:form>
+        </c:if>
+    </div>
 
   <table width = "100%">
   <thead><tr>
@@ -140,6 +147,7 @@
     <td width="30%"> Photo </td>
     <td width="10%">     </td>
   </tr></thead>
+
   <c:forEach items="${fullNoteList}" var="fullNote">
         <tr>
           <td> <div>
@@ -203,5 +211,17 @@
         </td></tr>
   </c:forEach>
   </table>
+
+<div align="center">
+    <c:if test="${flagNext}">
+        <sf:form action="/app" method="post">
+            <input type="hidden" name="isNext" value="true">
+            <input type="hidden" name="count" value="${count}">
+            <input type="hidden" name="counter" value="${counter}">
+            <button type="submit" class="button"> SHOW NEXT </button>
+        </sf:form>
+    </c:if>
+</div>
+
 </body>
 </html>

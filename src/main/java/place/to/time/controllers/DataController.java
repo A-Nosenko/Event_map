@@ -28,6 +28,8 @@ import java.util.List;
 @Controller
 public class DataController {
 
+    private static final int VOLUME_OF_PAGE = 10;
+
     @Autowired
     private NoteService noteService;
 
@@ -42,14 +44,74 @@ public class DataController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/app")
     public ModelAndView app() {
+        int counter = 0;
+        int count = 1;
+        boolean flagNext = false;
+        boolean flagPrev = false;
+        List<Long> idList = noteService.getIdlist();
+        if(idList.size() > VOLUME_OF_PAGE) {
+            flagNext = true;
+            count = idList.size() / VOLUME_OF_PAGE;
+            if((idList.size() % VOLUME_OF_PAGE) > 0) count++;
+            }
+
+        List<Photo> photos = new ArrayList();
+        List<Note> noteList = new ArrayList<>();
+        for(int i = counter * VOLUME_OF_PAGE; (i < idList.size()) && (i < counter * VOLUME_OF_PAGE + VOLUME_OF_PAGE); i++){
+            long noteId = idList.get(i);
+            noteList.add(noteService.findById(noteId));
+            photos.addAll(photoService.findPhotoByNoteId(noteId));
+        }
+
         List<FullNote> fullNoteList = new ArrayList<>();
-        List<Note> noteList = noteService.findAllNotes();
         for(Note note : noteList){
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
         ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photoService.findAllPhotos());
+        modelAndView.addObject("photos", photos);
+        modelAndView.addObject("counter", counter);
+        modelAndView.addObject("count", count);
+        modelAndView.addObject("flagPrev", flagPrev);
+        modelAndView.addObject("flagNext", flagNext);
+        return modelAndView;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/app")
+    public ModelAndView app(@RequestParam(value = "counter")int counter,
+                            @RequestParam(value = "count")int count,
+                            @RequestParam(value = "isNext") boolean isNext) {
+
+        boolean flagNext = false;
+        boolean flagPrev = false;
+        if(isNext) {counter++;} else {counter--;}
+        if(counter > 0) {flagPrev = true;}
+        List<Long> idList = noteService.getIdlist();
+        if(idList.size() > VOLUME_OF_PAGE * (counter + 1)) {
+            flagNext = true;
+            count = idList.size() / VOLUME_OF_PAGE;
+            if((idList.size() % VOLUME_OF_PAGE) > 0) count++;
+        }
+
+        List<Photo> photos = new ArrayList();
+        List<Note> noteList = new ArrayList<>();
+        for(int i = counter * VOLUME_OF_PAGE; (i < idList.size()) && (i < counter * VOLUME_OF_PAGE + VOLUME_OF_PAGE); i++){
+            long noteId = idList.get(i);
+            noteList.add(noteService.findById(noteId));
+            photos.addAll(photoService.findPhotoByNoteId(noteId));
+        }
+
+        List<FullNote> fullNoteList = new ArrayList<>();
+        for(Note note : noteList){
+            fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
+        }
+
+        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
+        modelAndView.addObject("photos", photos);
+        modelAndView.addObject("counter", counter);
+        modelAndView.addObject("count", count);
+        modelAndView.addObject("flagPrev", flagPrev);
+        modelAndView.addObject("flagNext", flagNext);
         return modelAndView;
     }
 
@@ -183,15 +245,7 @@ public class DataController {
             noteService.delete(id);
         }
 
-        List<FullNote> fullNoteList = new ArrayList<>();
-        List<Note> noteList = noteService.findAllNotes();
-        for(Note note : noteList){
-            fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
-        }
-
-        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photoService.findAllPhotos());
-        return modelAndView;
+        return app();
     }
 
     @RequestMapping("/image/{id}")

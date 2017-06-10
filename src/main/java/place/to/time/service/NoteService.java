@@ -8,6 +8,7 @@ import java.util.List;
  */
 public interface NoteService {
     List<Note> findAllNotes();
+    List<Long> getIdlist();
     List<Note> findNotes(String pattern);
     List<Note> findNotesByUserName(String pattern);
     List<Note> findNotesByDate(String date);

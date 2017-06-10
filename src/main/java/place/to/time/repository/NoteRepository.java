@@ -15,6 +15,10 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
 
     @Query("SELECT n FROM Note n ORDER BY n.date DESC ")
     List<Note> findAllNotes();
+
+    @Query("SELECT n.id FROM Note n ORDER BY n.date DESC ")
+    List<Long> findAllNotesId();
+
     @Query("SELECT n FROM Note n WHERE  n.action LIKE:pattern ORDER BY n.date DESC")
     List<Note> findNotes(@Param("pattern")String pattern);
     @Query("SELECT n FROM Note n WHERE n.userName LIKE :pattern ORDER BY n.date DESC")
