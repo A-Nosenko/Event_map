@@ -55,7 +55,7 @@ public class DataController {
             if((idList.size() % VOLUME_OF_PAGE) > 0) count++;
             }
 
-        List<Photo> photos = new ArrayList();
+        List<Photo> photos = new ArrayList<>();
         List<Note> noteList = new ArrayList<>();
         for(int i = counter * VOLUME_OF_PAGE; (i < idList.size()) && (i < counter * VOLUME_OF_PAGE + VOLUME_OF_PAGE); i++){
             long noteId = idList.get(i);
@@ -93,7 +93,7 @@ public class DataController {
             if((idList.size() % VOLUME_OF_PAGE) > 0) count++;
         }
 
-        List<Photo> photos = new ArrayList();
+        List<Photo> photos = new ArrayList<>();
         List<Note> noteList = new ArrayList<>();
         for(int i = counter * VOLUME_OF_PAGE; (i < idList.size()) && (i < counter * VOLUME_OF_PAGE + VOLUME_OF_PAGE); i++){
             long noteId = idList.get(i);
@@ -120,12 +120,14 @@ public class DataController {
         String finalPattern = pattern.replace(" ", "%");
         List<FullNote> fullNoteList = new ArrayList<>();
         List<Note> noteList = noteService.findNotes(finalPattern);
+        List<Photo> photos = new ArrayList<>();
         for(Note note : noteList){
+            photos.addAll(photoService.findPhotoByNoteId(note.getId()));
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
         ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photoService.findAllPhotos());
+        modelAndView.addObject("photos", photos);
         return modelAndView;
     }
 
@@ -134,12 +136,14 @@ public class DataController {
         String finalPattern = pattern.replace(" ", "%");
         List<FullNote> fullNoteList = new ArrayList<>();
         List<Note> noteList = noteService.findNotesByUserName(finalPattern);
+        List<Photo> photos = new ArrayList<>();
         for(Note note : noteList){
+            photos.addAll(photoService.findPhotoByNoteId(note.getId()));
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
         ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photoService.findAllPhotos());
+        modelAndView.addObject("photos", photos);
         return modelAndView;
     }
 
@@ -147,12 +151,14 @@ public class DataController {
     public ModelAndView appSearchByDate(@RequestParam(value="pattern")String date) {
         List<FullNote> fullNoteList = new ArrayList<>();
         List<Note> noteList = noteService.findNotesByDate(date);
+        List<Photo> photos = new ArrayList<>();
         for(Note note : noteList){
+            photos.addAll(photoService.findPhotoByNoteId(note.getId()));
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
         ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photoService.findAllPhotos());
+        modelAndView.addObject("photos", photos);
         return modelAndView;
     }
 
@@ -160,12 +166,14 @@ public class DataController {
     public ModelAndView appSortByNoteTime() {
         List<FullNote> fullNoteList = new ArrayList<>();
         List<Note> noteList = noteService.sortNotesByLoadTime();
+        List<Photo> photos = new ArrayList<>();
         for(Note note : noteList){
+            photos.addAll(photoService.findPhotoByNoteId(note.getId()));
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
         ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photoService.findAllPhotos());
+        modelAndView.addObject("photos", photos);
         return modelAndView;
     }
 
@@ -174,12 +182,14 @@ public class DataController {
         String finalPattern = pattern.replace(" ", "%");
         List<FullNote> fullNoteList = new ArrayList<>();
         List<Note> noteList = noteService.findNotesByPlaceDescription(finalPattern);
+        List<Photo> photos = new ArrayList<>();
         for(Note note : noteList){
+            photos.addAll(photoService.findPhotoByNoteId(note.getId()));
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
         ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photoService.findAllPhotos());
+        modelAndView.addObject("photos", photos);
         return modelAndView;
     }
 
