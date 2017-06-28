@@ -126,8 +126,8 @@ public class DataController {
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
-        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photos);
+        ModelAndView modelAndView = new ModelAndView("appReduced", "fullNoteList", fullNoteList);
+
         return modelAndView;
     }
 
@@ -142,8 +142,8 @@ public class DataController {
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
-        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photos);
+        ModelAndView modelAndView = new ModelAndView("appReduced", "fullNoteList", fullNoteList);
+
         return modelAndView;
     }
 
@@ -157,8 +157,8 @@ public class DataController {
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
-        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photos);
+        ModelAndView modelAndView = new ModelAndView("appReduced", "fullNoteList", fullNoteList);
+
         return modelAndView;
     }
 
@@ -172,8 +172,8 @@ public class DataController {
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
-        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photos);
+        ModelAndView modelAndView = new ModelAndView("appReduced", "fullNoteList", fullNoteList);
+
         return modelAndView;
     }
 
@@ -188,8 +188,8 @@ public class DataController {
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
-        ModelAndView modelAndView = new ModelAndView("app", "fullNoteList", fullNoteList);
-        modelAndView.addObject("photos", photos);
+        ModelAndView modelAndView = new ModelAndView("appReduced", "fullNoteList", fullNoteList);
+
         return modelAndView;
     }
 
