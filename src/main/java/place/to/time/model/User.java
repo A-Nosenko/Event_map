@@ -6,7 +6,8 @@ import java.io.Serializable;
 import java.util.Set;
 
 /**
- * Created by ENTITY on 2/5/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 @Entity
 @Table(name = "users")

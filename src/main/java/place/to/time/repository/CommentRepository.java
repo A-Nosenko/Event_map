@@ -8,11 +8,12 @@ import place.to.time.model.Comment;
 import java.util.List;
 
 /**
- * Created by ENTITY on 3/24/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     List<Comment> findCommentByNoteId(long noteId);
 
     @Query("SELECT COUNT (c) FROM Comment c WHERE c.noteId = :noteId")
     long findNumberOfCommentsByNoteId(@Param("noteId")long noteId);
-    }
+}

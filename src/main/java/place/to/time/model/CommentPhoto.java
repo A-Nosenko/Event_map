@@ -4,9 +4,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created by ENTITY on 3/25/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
-
 @Entity
 @Table(name = "photoscomment")
 public class CommentPhoto implements Serializable{

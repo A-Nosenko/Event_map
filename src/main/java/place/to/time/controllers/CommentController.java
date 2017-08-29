@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ENTITY on 3/25/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 @Controller
 public class CommentController {
@@ -91,7 +92,6 @@ public class CommentController {
             e.printStackTrace();
         }
     }
-
 }
 
 

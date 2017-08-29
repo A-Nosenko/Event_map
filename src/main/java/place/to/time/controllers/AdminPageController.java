@@ -10,7 +10,8 @@ import place.to.time.service.UserRoleService;
 import place.to.time.service.UserService;
 
 /**
- * Created by ENTITY on 4/14/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 @Controller
 public class AdminPageController {
@@ -40,5 +41,4 @@ public class AdminPageController {
         ModelAndView modelAndView = new ModelAndView("adminPage", "users", userService.getUsersList());
         return modelAndView;
     }
-
 }

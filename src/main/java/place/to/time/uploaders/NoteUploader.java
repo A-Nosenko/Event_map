@@ -4,7 +4,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 /**
- * Created by ENTITY on 3/15/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public class NoteUploader {
 
@@ -86,5 +87,4 @@ public class NoteUploader {
     public void setAction(String action) {
         this.action = action;
     }
-
 }

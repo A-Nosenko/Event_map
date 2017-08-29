@@ -17,7 +17,8 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by ENTITY on 3/24/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 @Controller
 public class NoteController {

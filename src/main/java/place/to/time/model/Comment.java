@@ -5,7 +5,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * Created by ENTITY on 3/24/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 @Entity
 @Table(name = "comments")

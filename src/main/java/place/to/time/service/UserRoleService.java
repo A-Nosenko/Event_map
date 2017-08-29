@@ -1,7 +1,8 @@
 package place.to.time.service;
 
 /**
- * Created by ENTITY on 4/23/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public interface UserRoleService {
     void ban(long id);

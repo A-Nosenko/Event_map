@@ -3,7 +3,8 @@ package place.to.time.service;
 import place.to.time.model.UserPhoto;
 
 /**
- * Created by ENTITY on 4/2/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public interface UserPhotoService {
     UserPhoto findUserPhotoByUserId(long id);

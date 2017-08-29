@@ -8,9 +8,9 @@ import place.to.time.model.User;
 import java.util.List;
 
 /**
- * Created by ENTITY on 2/5/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
-
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
 

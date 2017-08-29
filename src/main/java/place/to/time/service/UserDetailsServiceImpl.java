@@ -15,7 +15,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by ENTITY on 2/5/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  * Implementation of {@link org.springframework.security.core.userdetails.UserDetailsService} interface.
  */
 public class UserDetailsServiceImpl implements UserDetailsService {

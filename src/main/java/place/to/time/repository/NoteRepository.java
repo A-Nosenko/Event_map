@@ -3,13 +3,13 @@ package place.to.time.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import place.to.time.application.LatLng;
 import place.to.time.model.Note;
 
 import java.util.List;
 
 /**
- * Created by ENTITY on 3/10/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
@@ -29,4 +29,4 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     List<Note> findNotesByPlaceDescription(@Param("pattern")String pattern);
     @Query("SELECT n FROM Note n ORDER BY n.note_time DESC ")
     List<Note> sortNotesByLoadTime ();
-    }
+}

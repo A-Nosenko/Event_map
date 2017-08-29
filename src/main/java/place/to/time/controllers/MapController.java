@@ -14,7 +14,8 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 
 /**
- * Created by ENTITY on 4/15/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 @Controller
 public class MapController {
@@ -67,6 +68,4 @@ public class MapController {
         }
         return jsonObject;
     }
-
-
 }

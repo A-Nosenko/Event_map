@@ -7,7 +7,8 @@ import org.springframework.data.repository.query.Param;
 import place.to.time.model.UserRole;
 
 /**
- * Created by ENTITY on 4/23/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public interface UserRoleRepository extends JpaRepository<UserRole, Long> {
 

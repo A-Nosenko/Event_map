@@ -10,11 +10,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.transaction.annotation.Transactional;
 
-
 /**
- * Created by ENTITY on 2/5/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
-
 public class SecurityServiceImpl implements SecurityService {
 
     private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);

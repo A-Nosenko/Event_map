@@ -1,9 +1,5 @@
 package place.to.time.controllers;
 
-/**
- * Created by ENTITY on 2/1/2017.
- */
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+/**
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
+ */
 @Controller
 public class DataController {
 
@@ -248,11 +247,12 @@ public class DataController {
 
         if(noteService.findById(id) != null) {
             long[] photoIdMassive = photoService.getIdMassive(id);
-            if(photoIdMassive.length > 0)
+            if(photoIdMassive.length > 0) {
                 for (long photoId : photoIdMassive) {
                     photoService.delete(photoId);
                 }
-            noteService.delete(id);
+                noteService.delete(id);
+            }
         }
 
         return app();
@@ -261,12 +261,11 @@ public class DataController {
     @RequestMapping("/image/{id}")
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") long id) {
         try {
-                    byte[] content = photoService.findPhoto(id);
-                    response.setContentType("image/png");
-                    response.getOutputStream().write(content);
-                    } catch (IOException e) {
-                   e.printStackTrace();
-                 }
+            byte[] content = photoService.findPhoto(id);
+            response.setContentType("image/png");
+            response.getOutputStream().write(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 }

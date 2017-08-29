@@ -13,9 +13,9 @@ import place.to.time.service.SecurityService;
 import place.to.time.service.UserService;
 
 /**
- * Created by ENTITY on 3/18/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
-
 @Controller
 public class SecurityController {
 
@@ -57,5 +57,4 @@ public class SecurityController {
         securityService.autoLogin(user.getLogin(), user.getRepeatedPassword());
         return "registrationReady";
     }
-
 }

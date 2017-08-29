@@ -4,7 +4,8 @@ import place.to.time.model.Note;
 import java.util.List;
 
 /**
- * Created by ENTITY on 3/10/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public interface NoteService {
     List<Note> findAllNotes();

@@ -1,6 +1,5 @@
 package place.to.time.configs;
 
-
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +24,10 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import javax.sql.DataSource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
+/**
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
+ */
 @Configuration
 @ComponentScan("place.to.time")
 @EnableWebMvc
@@ -33,7 +36,6 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @EnableTransactionManagement
 public class AppConfig extends WebMvcConfigurerAdapter {
 
-
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
         return new PropertySourcesPlaceholderConfigurer();
@@ -41,7 +43,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private Environment env;
-
 
     @Bean
     public DataSource dataSource() {
@@ -85,8 +86,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager()
-    {
+    public PlatformTransactionManager transactionManager() {
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
         jpaTransactionManager.setEntityManagerFactory(entityManagerFactory(dataSource(),jpaVendorAdapter()).getObject());
         return jpaTransactionManager;
@@ -101,28 +101,44 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public NoteService noteService(){return new NoteServiceImpl();}
+    public NoteService noteService(){
+        return new NoteServiceImpl();
+    }
 
     @Bean
-    public PhotoService photoService(){return new PhotoServiceImpl();}
+    public PhotoService photoService(){
+        return new PhotoServiceImpl();
+    }
 
     @Bean
-    public CommentService commentService(){return new CommentServiceImpl();}
+    public CommentService commentService(){
+        return new CommentServiceImpl();
+    }
 
     @Bean
-    public CommentPhotoService commentPhotoService(){return new CommentPhotoServiceImpl();}
+    public CommentPhotoService commentPhotoService(){
+        return new CommentPhotoServiceImpl();
+    }
 
     @Bean
-    public UserPhotoService userPhotoService(){return new UserPhotoServiceImpl();}
+    public UserPhotoService userPhotoService(){
+        return new UserPhotoServiceImpl();
+    }
 
     @Bean
-    public MessageService messageService(){return new MessageServiceImpl();}
+    public MessageService messageService(){
+        return new MessageServiceImpl();
+    }
 
     @Bean
-    public LatLngService latLngService(){return new LatLngServiceImpl();}
+    public LatLngService latLngService(){
+        return new LatLngServiceImpl();
+    }
 
     @Bean
-    public UserRoleService userRoleService(){return  new UserRoleServiceImpl();}
+    public UserRoleService userRoleService(){
+        return  new UserRoleServiceImpl();
+    }
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer){
@@ -133,5 +149,4 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
-
 }

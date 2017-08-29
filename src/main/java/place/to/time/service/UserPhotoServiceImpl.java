@@ -5,7 +5,8 @@ import place.to.time.model.UserPhoto;
 import place.to.time.repository.UserPhotoRepository;
 
 /**
- * Created by ENTITY on 4/2/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public class UserPhotoServiceImpl implements UserPhotoService {
 

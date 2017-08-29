@@ -10,9 +10,10 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.*;
 
-
-
-
+/**
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
+ */
 public class WebInitializer  implements WebApplicationInitializer {
 
     private static final String LOCATION = "C:/temp/";

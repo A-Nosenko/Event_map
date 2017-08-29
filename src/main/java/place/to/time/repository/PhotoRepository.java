@@ -6,10 +6,10 @@ import place.to.time.model.Photo;
 import java.util.List;
 
 /**
- * Created by ENTITY on 3/3/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public interface PhotoRepository extends JpaRepository<Photo, Long> {
 
     List<Photo> findPhotoByNoteId(long noteId);
-
 }

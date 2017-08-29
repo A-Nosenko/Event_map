@@ -7,7 +7,8 @@ import place.to.time.repository.CommentPhotoRepository;
 import java.util.List;
 
 /**
- * Created by ENTITY on 3/25/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public class CommentPhotoServiceImpl implements CommentPhotoService {
 

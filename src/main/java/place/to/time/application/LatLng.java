@@ -1,9 +1,8 @@
 package place.to.time.application;
 
-
-
 /**
- * Created by ENTITY on 4/14/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public class LatLng {
 

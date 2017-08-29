@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by ENTITY on 4/2/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 @Entity
 @Table(name = "messages")

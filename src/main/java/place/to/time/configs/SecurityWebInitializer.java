@@ -8,7 +8,8 @@ import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 
 /**
- * Created by ENTITY on 2/15/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public class SecurityWebInitializer extends AbstractSecurityWebApplicationInitializer  {
 
@@ -20,5 +21,5 @@ public class SecurityWebInitializer extends AbstractSecurityWebApplicationInitia
         encodingFilter.setInitParameter("forceEncoding", "true");
         encodingFilter.addMappingForUrlPatterns(null, false, "/*");
         insertFilters(servletContext, new MultipartFilter());
-        }
     }
+}

@@ -5,7 +5,8 @@ import org.springframework.transaction.annotation.Transactional;
 import place.to.time.repository.UserRoleRepository;
 
 /**
- * Created by ENTITY on 4/23/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public class UserRoleServiceImpl implements UserRoleService {
 

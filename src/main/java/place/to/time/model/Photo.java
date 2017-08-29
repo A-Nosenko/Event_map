@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * Created by ENTITY on 3/3/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 @Entity
 @Table(name = "photos")
@@ -72,5 +73,4 @@ public class Photo implements Serializable {
     public void setNoteId(long noteId) {
         this.noteId = noteId;
     }
-
 }

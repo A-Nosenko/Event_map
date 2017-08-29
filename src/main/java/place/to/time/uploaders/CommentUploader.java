@@ -5,7 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 /**
- * Created by ENTITY on 3/25/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 public class CommentUploader {
     private List<MultipartFile> files;

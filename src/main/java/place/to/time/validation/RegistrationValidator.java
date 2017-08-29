@@ -13,7 +13,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by ENTITY on 2/2/2017.
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
  */
 @Component
 public class RegistrationValidator implements Validator {
@@ -35,13 +36,13 @@ public class RegistrationValidator implements Validator {
     public void validate(Object object, Errors errors){
         User user = (User)object;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "login.empty", "Enter login");
-          if(!loginCorrect(user.getLogin())) {
+        if(!loginCorrect(user.getLogin())) {
             errors.rejectValue("login", "login.incorrect", "The login must consist of alphabetic or numeric characters or an underscore, 3 - 100 characters ");
-            }
+        }
 
-         if(userService.findByLogin(user.getLogin()) != null) {
-           errors.rejectValue("login", "login.alreadyExists", "This login already exists");
-          }
+        if(userService.findByLogin(user.getLogin()) != null) {
+            errors.rejectValue("login", "login.alreadyExists", "This login already exists");
+        }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "password.empty", "Password cannot be empty");
         if(!(user.getPassword()).equals(user.getRepeatedPassword())){

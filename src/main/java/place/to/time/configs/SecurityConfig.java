@@ -1,6 +1,5 @@
 package place.to.time.configs;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import place.to.time.model.User;
 import place.to.time.service.*;
 
-
+/**
+ * @version 2.0 29 August 2017
+ * @author  Nosenko Anatolii
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
