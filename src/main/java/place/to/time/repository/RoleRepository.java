@@ -10,5 +10,5 @@ import place.to.time.model.Role;
  */
 @Transactional
 public interface RoleRepository extends JpaRepository<Role, Long> {
-
 }
+
