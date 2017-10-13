@@ -21,8 +21,17 @@ body {
 	margin: 1em;
 	padding: 0;
 }
+span.error {
+	color: orangered;
+}
 
-
+#rightHeader {
+	background-color: rgb(136,162,170);
+	float: right;
+	text-align: right;
+	margin-right: 0em;
+	color: whitesmoke;
+}
 p {
 	line-height: 1.5em;
 }

@@ -7,11 +7,7 @@
   Time: 19:00
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="security" uri ="http://www.springframework.org/security/tags"%>
-
+<%@ include file="/WEB-INF/pages/jspf/taglib.jspf" %>
 <html>
 <head>
     <META NAME="description" CONTENT="This site contains information for bicyclists">
@@ -21,14 +17,9 @@
     <title>==EVENT_MAP==</title>
     <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
     <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
-    <style type="text/css">
-        span.error {
-            color: orangered;
-        }
-    </style>
 </head>
 <body>
-
+<%@ include file="/WEB-INF/pages/jspf/select.jspf" %>
 <div align="center">
     <a href="/app"><img src="resources/images/index.gif" alt="Welcome!"></a>
 </div>
@@ -36,7 +27,7 @@
 <div align="right">
 
 <sf:form  action="/register" method="get">
-    <button type="submit" class="button">Registration</button>
+    <button type="submit" class="button"><st:message code="registration"/></button>
 </sf:form>
 
     <br/>
@@ -75,8 +66,9 @@
     <br/>
     <br/><br/><br/>
     <br/>
-
-    <a href="https://github.com/A-Nosenko/Event_map" >SOURCE CODE</a>
+    <div align="center">
+        <a href="https://github.com/A-Nosenko/Event_map" >SOURCE CODE</a>
+    </div>
 </div>
 
 </body>
