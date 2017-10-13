@@ -15,13 +15,9 @@
   <title>==EVENT_MAP==</title>
   <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
   <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
-  <style type="text/css">
-    span.error {
-      color: orangered;
-    }
-  </style>
 </head>
 <body>
+
 <div align="left">
   <a href="/"><img src="resources/images/ref.gif"></a>
 </div>

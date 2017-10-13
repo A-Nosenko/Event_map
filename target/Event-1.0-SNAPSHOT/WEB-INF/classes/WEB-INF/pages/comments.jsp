@@ -11,13 +11,9 @@
   <title>==EVENT_MAP==</title>
   <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
   <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
-  <style type="text/css">
-    span.error {
-      color: orangered;
-    }
-  </style>
 </head>
 <body>
+
 <div align="left">
   <a href="/"><img src="resources/images/ref.gif"></a>
 </div>
@@ -43,9 +39,9 @@
     <td width="5%">   </td>
     <td width="10%"> Date </td>
     <td width="10%"> Address </td>
-    <td width="25%"> Event </td>
+    <td width="20%"> Event </td>
     <td width="30%"> Photo </td>
-    <td width="10%">     </td>
+    <td width="15%">     </td>
   </tr></thead>
       <tr>
         <td>

@@ -13,6 +13,7 @@
     <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
 </head>
 <body>
+
 <div align="left">
     <a href="/"><img src="resources/images/ref.gif"></a>
 </div>

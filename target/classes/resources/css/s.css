@@ -32,6 +32,13 @@ span.error {
 	margin-right: 0em;
 	color: whitesmoke;
 }
+
+#map {
+	height: 90%;
+	width: 90%;
+	margin: 3rem auto;
+}
+
 p {
 	line-height: 1.5em;
 }
@@ -127,7 +134,7 @@ a.button:active {
 
 
 button.button{
-	min-width: 140px;
+	min-width: 180px;
 	position: relative;
 	display: inline-block;
 	font-size: 90%;

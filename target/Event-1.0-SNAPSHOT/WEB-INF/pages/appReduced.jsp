@@ -11,14 +11,9 @@
     <title>==EVENT_MAP==</title>
     <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
     <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
-    <style type="text/css">
-        span.error {
-            color: orangered;
-        }
-    </style>
 </head>
 <body>
-
+<%@ include file="/WEB-INF/pages/jspf/select.jspf" %>
 <div align="left">
     <a href="/"><img src="resources/images/ref.gif"></a>
 </div>
@@ -26,22 +21,17 @@
     <tr><td width="70%">
         <c:if test = "${pageContext.request.remoteUser == null}" >
             <h2>
-
-                <li>You can view the description of events,
-                    search by keyword, author's login or event date.</li>
-                <li>To publish your notes and comments you need to register on the site.</li>
-                <li>The administration of the site is not responsible for the information
-                    posted by users.</li>
+                <li><st:message code="app.li.1"/></li>
+                <li><st:message code="app.li.2"/></li>
+                <li><st:message code="app.li.3"/></li>
             </h2>
         </c:if>
 
         <c:if test = "${pageContext.request.remoteUser != null}" >
             <h2>
 
-                <li>You can view the description of events,
-                    search by keyword, author's login or event date.</li>
-                <li>The administration of the site is not responsible for the information
-                    posted by users.</li>
+                <li><st:message code="app.li.1"/></li>
+                <li><st:message code="app.li.3"/></li>
 
             </h2>
 
@@ -139,9 +129,9 @@
         <td width="5%">   </td>
         <td width="10%"> Date </td>
         <td width="10%"> Address </td>
-        <td width="50%"> Event </td>
+        <td width="45%"> Event </td>
         <td width="5%">  </td>
-        <td width="10%">     </td>
+        <td width="15%">     </td>
     </tr></thead>
 
     <c:forEach items="${fullNoteList}" var="fullNote">

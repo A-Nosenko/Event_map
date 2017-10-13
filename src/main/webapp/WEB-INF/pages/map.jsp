@@ -12,30 +12,10 @@
   <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
   <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
   <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyAstb_zkWsEU3szOJ6ti59x_sZVDBCAX40"></script>
-  <style type="text/css">
-    span.error {
-      color: orangered;
-    }
-    #map {
-      height: 90%;
-      width: 90%;
-      margin: 3rem auto;
-    }
 
-    h3 {
-      color: black;
-      font-size: 1.25em;
-    }
-
-    {color: black;}
-
-    p {
-      display: none;
-    }
-  </style>
 </head>
 <body>
-
+<%@ include file="/WEB-INF/pages/jspf/select.jspf" %>
 <p id="markers">${markers}</p>
 <p id="JSONObject">${JSONObject}</p>
 

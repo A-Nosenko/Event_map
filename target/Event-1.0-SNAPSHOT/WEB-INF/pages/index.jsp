@@ -27,39 +27,39 @@
 <div align="right">
 
 <sf:form  action="/register" method="get">
-    <button type="submit" class="button"><st:message code="registration"/></button>
+    <button type="submit" class="button"><st:message code="button.registration"/></button>
 </sf:form>
 
     <br/>
     <c:if test = "${pageContext.request.remoteUser != null}" >
        Your login:  <c:out value="${pageContext.request.remoteUser}       "/>
     <sf:form action="/logout" method="post">
-        <button type= "submit" class="button"> Exit </button>
+        <button type= "submit" class="button"><st:message code="button.exit"/> </button>
     </sf:form>
         <sf:form action="/account" method="post">
             <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-        <button type= "submit" class="button">My account</button>
+        <button type= "submit" class="button"><st:message code="button.area"/></button>
         </sf:form>
     </c:if>
 
     <c:if test = "${pageContext.request.remoteUser == null}" >
             <sf:form action="/login" method="get">
-            <button type= "submit" class="button"> Login </button>
+            <button type= "submit" class="button"><st:message code="button.login"/></button>
         </sf:form>
     </c:if>
 
     <sf:form  action="/app" method="get">
-        <button type="submit" class="button">EVENT LIST</button>
+        <button type="submit" class="button"><st:message code="button.eventList"/></button>
     </sf:form>
 
     <security:authorize access = "hasRole('ROLE_ADMIN')">
         <sf:form  action="/admin" method="post">
-            <button type="submit" class="button">ADMIN_PAGE</button>
+            <button type="submit" class="button"><st:message code="button.adminPage"/></button>
         </sf:form>
     </security:authorize>
 
     <sf:form action="/map" method="post">
-         <button type= "submit" class="button">EVENT MAP</button>
+         <button type= "submit" class="button"><st:message code="button.eventMap"/></button>
     </sf:form>
 
     <br/>
