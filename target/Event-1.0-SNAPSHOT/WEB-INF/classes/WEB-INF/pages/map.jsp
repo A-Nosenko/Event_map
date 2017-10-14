@@ -15,24 +15,50 @@
 
 </head>
 <body>
-<%@ include file="/WEB-INF/pages/jspf/select.jspf" %>
 <p id="markers">${markers}</p>
 <p id="JSONObject">${JSONObject}</p>
 
 <div align="left">
   <a href="/"><img src="resources/images/ref.gif"></a>
-
-  <form  action="/app" method="get">
-    <button type="submit" class="button">EVENT LIST</button>
-  </form>
-
 </div>
+<div id="rightHeader">
+
+  <sf:form  action="/register" method="get">
+  <button type="submit" class="button"><st:message code="button.registration"/></button>
+  </sf:form>
+
+  <br/>
+  <c:if test = "${pageContext.request.remoteUser != null}" >
+    <st:message code="message.yourLogin"/>  <c:out value="${pageContext.request.remoteUser}       "/>
+  <sf:form action="/logout" method="post">
+  <button type= "submit" class="button"><st:message code="button.exit"/> </button>
+  </sf:form>
+  <sf:form action="/account" method="post">
+  <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
+  <button type= "submit" class="button"><st:message code="button.area"/></button>
+  </sf:form>
+  </c:if>
+
+  <c:if test = "${pageContext.request.remoteUser == null}" >
+  <sf:form action="/login" method="get">
+  <button type= "submit" class="button"><st:message code="button.login"/></button>
+  </sf:form>
+  </c:if>
+
+  <sf:form  action="/app" method="get">
+  <button type="submit" class="button"><st:message code="button.eventList"/></button>
+  </sf:form>
+
+  <security:authorize access = "hasRole('ROLE_ADMIN')">
+  <sf:form  action="/admin" method="post">
+  <button type="submit" class="button"><st:message code="button.adminPage"/></button>
+  </sf:form>
+  </security:authorize>
 
 <div id="map"></div>
 <script type="text/javascript" src = "resources/js/markers.js">
 
 </script>
-
 
 =====================================================<br/>
 JSON from method new Gson().toJson(latLngService.getLatLng():

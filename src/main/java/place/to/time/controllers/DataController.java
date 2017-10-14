@@ -83,8 +83,15 @@ public class DataController {
 
         boolean flagNext = false;
         boolean flagPrev = false;
-        if(isNext) {counter++;} else {counter--;}
-        if(counter > 0) {flagPrev = true;}
+        if(isNext) {
+            counter++;
+        } else {
+            counter--;
+        }
+        if(counter > 0) {
+            flagPrev = true;
+        }
+
         List<Long> idList = noteService.getIdlist();
         if(idList.size() > VOLUME_OF_PAGE * (counter + 1)) {
             flagNext = true;
@@ -126,7 +133,7 @@ public class DataController {
         }
 
         ModelAndView modelAndView = new ModelAndView("appReduced", "fullNoteList", fullNoteList);
-
+        modelAndView.addObject("photos", photos);
         return modelAndView;
     }
 
@@ -142,7 +149,7 @@ public class DataController {
         }
 
         ModelAndView modelAndView = new ModelAndView("appReduced", "fullNoteList", fullNoteList);
-
+        modelAndView.addObject("photos", photos);
         return modelAndView;
     }
 
@@ -157,7 +164,7 @@ public class DataController {
         }
 
         ModelAndView modelAndView = new ModelAndView("appReduced", "fullNoteList", fullNoteList);
-
+        modelAndView.addObject("photos", photos);
         return modelAndView;
     }
 
@@ -172,7 +179,7 @@ public class DataController {
         }
 
         ModelAndView modelAndView = new ModelAndView("appReduced", "fullNoteList", fullNoteList);
-
+        modelAndView.addObject("photos", photos);
         return modelAndView;
     }
 
@@ -188,7 +195,7 @@ public class DataController {
         }
 
         ModelAndView modelAndView = new ModelAndView("appReduced", "fullNoteList", fullNoteList);
-
+        modelAndView.addObject("photos", photos);
         return modelAndView;
     }
 

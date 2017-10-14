@@ -32,7 +32,7 @@
 
     <br/>
     <c:if test = "${pageContext.request.remoteUser != null}" >
-       Your login:  <c:out value="${pageContext.request.remoteUser}       "/>
+        <st:message code="message.yourLogin"/>  <c:out value="${pageContext.request.remoteUser}       "/>
     <sf:form action="/logout" method="post">
         <button type= "submit" class="button"><st:message code="button.exit"/> </button>
     </sf:form>

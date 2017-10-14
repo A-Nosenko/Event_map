@@ -38,7 +38,7 @@
         <sf:form action="/dialog" method="post">
           <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
           <input type="hidden" name="userNameTo" value="${user.login}"/>
-          <button type="submit" class="button">Message</button>
+          <button type="submit" class="button"><st:message code="button.message"/></button>
         </sf:form>
       </c:if>
     </td>
@@ -47,23 +47,20 @@
 ${user.roles}
     </td>
 
-    <td width="10%">
+    <td width="15%">
 <sf:form action="/ban" method="post" >
   <input type="hidden" name="id" value="${user.id}">
-  <button type="submit" class="button"> BAN </button>
+  <button type="submit" class="button"><st:message code="button.ban"/></button>
 </sf:form>
 
       <sf:form action="/unBan" method="post" >
         <input type="hidden" name="id" value="${user.id}">
-        <button type="submit" class="button">UNBAN</button>
+        <button type="submit" class="button"><st:message code="button.unBan"/></button>
       </sf:form>
 
     </td>
 
-    <td width="20%">
-
-
-
+    <td width="10%">
 
     </td>
 

@@ -19,39 +19,40 @@
 </div>
   <div align="right">
     <form  action="/app" method="get">
-      <button type="submit" class="button">EVENT LIST</button>
+      <button type="submit" class="button"><st:message code="button.eventList"/></button>
     </form>
     <c:if test = "${pageContext.request.remoteUser != null}" >
       <sf:form action="/account" method="post">
         <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-        <button type= "submit" class="button">My account</button>
+        <button type= "submit" class="button"><st:message code="button.area"/></button>
       </sf:form>
     </c:if>
   </div>
   <sf:form enctype="multipart/form-data" modelAttribute="noteUploader" action="/addNote" method="post">
-  <div><h3> Fill the form: </h3></div>
+  <div><h3><st:message code="message.fillTheForm"/></h3></div>
 
     <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-    <div> Coordinates: <br/>Latitude ..... <input type="text" name="latitude" placeholder="от -90 до 90"><br/>
-                            Longitude .. <input type="text" name="longitude" placeholder="от -180 до 180"></div>
+    <div><st:message code="message.coordinates"/>
+      <br/><st:message code="message.latitude"/> ..... <input type="text" name="latitude" ><br/>
+      <br/><st:message code="message.longitude"/> .. <input type="text" name="longitude" ></div>
     <br/>
-    For latitude, use values ranging from -90 to 90.<br/>
-    Longitude should be between -180 and 180.<br/><br/>
-    <div> Address or description of the place: <br/> <textarea cols="100" rows="3" name="placeDescription"></textarea></div>
+    <st:message code="message.latitude.message"/><br/>
+    <st:message code="message.longitude.message"/><br/><br/>
+    <div><st:message code="message.address"/><br/> <textarea cols="100" rows="3" name="placeDescription"></textarea></div>
     <br/>
-    <div> Date: <br/> <input type="date" name="date"></div>
+    <div><st:message code="message.date"/>: <br/> <input type="date" name="date"></div>
     <br/>
-    <div> Event: <br/> <textarea cols="100" rows="10" name="action"></textarea></div>
+    <div><st:message code="message.event"/>: <br/> <textarea cols="100" rows="10" name="action"></textarea></div>
     <br/>
 
-    <div>Photo 1:  <input type="file" name="files[0]" /></div>
-    <div>Photo 2:  <input type="file" name="files[1]" /></div>
-    <div>Photo 3:  <input type="file" name="files[2]" /></div>
-    <div>Photo 4:  <input type="file" name="files[3]" /></div>
-    <div>Photo 5:  <input type="file" name="files[4]" /></div>
+    <div><st:message code="message.photo"/> 1:  <input type="file" name="files[0]" /></div>
+    <div><st:message code="message.photo"/> 2:  <input type="file" name="files[1]" /></div>
+    <div><st:message code="message.photo"/> 3:  <input type="file" name="files[2]" /></div>
+    <div><st:message code="message.photo"/> 4:  <input type="file" name="files[3]" /></div>
+    <div><st:message code="message.photo"/> 5:  <input type="file" name="files[4]" /></div>
 
 
-  <div><button type="submit" class="button">Publish</button></div>
+  <div><button type="submit" class="button"><st:message code="button.upload"/></button></div>
   </sf:form>
 
 </body>

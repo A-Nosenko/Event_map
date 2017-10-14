@@ -26,23 +26,23 @@
 
 <c:if test = "${pageContext.request.remoteUser == null}">
   <form  action="/app" method="get">
-    <button type="submit" class="button">EVENT LIST</button>
+    <button type="submit" class="button"><st:message code="button.eventList"/></button>
   </form>
     <form  action="/register" method="get">
-    <button type="submit" class="button">Registration</button>
+    <button type="submit" class="button"><st:message code="button.registration"/></button>
   </form>
 </div>
 </c:if>
 <div align="center">
 
   <c:if test = "${pageContext.request.remoteUser != null}">
-    <h3> You are welcome!  <c:out value="${pageContext.request.remoteUser}"></c:out></h3><br/>
+    <h3> <st:message code="message.youAreWelcome"/>  <c:out value="${pageContext.request.remoteUser}"></c:out></h3><br/>
     <form  action="/app" method="get">
-      <button type="submit" class="button">EVENT LIST</button>
+      <button type="submit" class="button"><st:message code="button.eventList"/></button>
     </form>
     <sf:form action="/account" method="post">
       <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-      <button type= "submit" class="button">My account</button>
+      <button type= "submit" class="button"><st:message code="button.area"/></button>
     </sf:form>
   </c:if>
 
@@ -58,8 +58,8 @@
   <span class="error">${error}</span><br/>
   <c:if test = "${pageContext.request.remoteUser == null}">
     <input id="remember_me" name="remember-me" type="checkbox"/>
-    <label for = "remember_me">Remember me</label><br/><br/>
-    <button type="submit" class="button"> Sign in </button></c:if>
+    <label for = "remember_me"><st:message code="holder.rememberMe"/></label><br/><br/>
+    <button type="submit" class="button"><st:message code="button.signIn"/></button></c:if>
 </sf:form>
 </div>
 

@@ -16,7 +16,7 @@
 
 <div align="right">
     <sf:form action="${contextPath}/logout" method="post">
-        <button type= "submit" class="button">Exit</button>
+        <button type= "submit" class="button"><st:message code="button.exit"/></button>
     </sf:form>
 </div>
 <div align="left">
@@ -27,14 +27,14 @@
 
 
     <sf:form  action="/app" method="get">
-        <button type="submit" class="button">EVENT LIST</button>
+        <button type="submit" class="button"><st:message code="button.eventList"/></button>
     </sf:form>
 
 
 
 </div>
 
-<h2>Your login: ${pageContext.request.remoteUser}</h2>
+<h2><st:message code="message.yourLogin"/> ${pageContext.request.remoteUser}</h2>
 <br/>
 <table width="100%">
     <tr><td width="20%">
@@ -45,17 +45,17 @@
             <sf:form enctype="multipart/form-data" modelAttribute="accountUploader" method="post" action="/setAccount">
                 <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
                  <br/> <input type="file" name="file" />
-                <button type="submit" class="button">Upload</button>
+                <button type="submit" class="button"><st:message code="button.upload"/></button>
         </sf:form>
         </div>
     </td>
         <td width="80%">
             <div align="left">
-            <h2>Messages:</h2>
+            <h2><st:message code="message.messages"/></h2>
 
                 <sf:form action="/account" method="post">
                     <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-                    <button type= "submit" class="button">Refresh</button>
+                    <button type= "submit" class="button"><st:message code="button.refresh"/></button>
                 </sf:form>
 
             <c:forEach items="${messages}" var="message">
@@ -63,22 +63,22 @@
     <tr>
         <td width="35%"><div>
             <c:if test="${message.userNameTo == pageContext.request.remoteUser}">
-                Received from  ${message.userNameFrom}<br/></c:if>
+                <st:message code="message.receivedFrom"/>  ${message.userNameFrom}<br/></c:if>
             <c:if test="${message.userNameFrom == pageContext.request.remoteUser}">
-                Sent to user  ${message.userNameTo}<br/></c:if>
+                <st:message code="message.sentTo"/>${message.userNameTo}<br/></c:if>
             <fmt:formatDate value="${message.messageTime}" pattern="dd-MM-yyyy HH:mm:ss" />
         </div></td>
-        <td width="15%">
+        <td width="25%">
                  <sf:form action="/dialog" method="post">
                 <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
                 <c:if test="${message.userNameTo == pageContext.request.remoteUser}">
                     <input type="hidden" name="userNameTo" value="${message.userNameFrom}"/></c:if>
                 <c:if test="${message.userNameFrom == pageContext.request.remoteUser}">
                     <input type="hidden" name="userNameTo" value="${message.userNameTo}"/></c:if>
-                <button type="submit" class="button">To dialog</button>
+                <button type="submit" class="button"><st:message code="button.toDialog"/></button>
             </sf:form>
         </td>
-        <td width="50%"><div>
+        <td width="40%"><div>
             ${message.messageText}
         </div></td>
 

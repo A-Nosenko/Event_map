@@ -21,21 +21,21 @@
   <br/>
   <br/>
   <br/>
-  <h2> The theme will be completely deleted, including comments and photos! </h2>
+  <h2><st:message code="message.confirmDelete"/></h2>
   <br/>
   <br/>
 
   <div align="center">
 
     <sf:form  action="/app" method="get">
-      <button type="submit" class="button">Cancel</button>
+      <button type="submit" class="button"><st:message code="button.cancel"/></button>
     </sf:form>
   </div>
   <br/>
   <br/>
   <sf:form  action="/deleteTrue" method="post">
     <input type = "hidden" name = "id" value="${id}">
-    <button type="submit" class="button">Continue</button>
+    <button type="submit" class="button"><st:message code="button.continue"/></button>
   </sf:form>
 
 </div>

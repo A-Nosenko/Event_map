@@ -22,18 +22,18 @@
 <div align="right">
   <sf:form action="/account" method="post">
     <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-    <button type= "submit" class="button">My account</button>
+    <button type= "submit" class="button"><st:message code="button.area"/></button>
   </sf:form>
 
   <sf:form  action="/app" method="get">
-    <button type="submit" class="button">EVENT LIST</button>
+    <button type="submit" class="button"><st:message code="button.eventList"/></button>
   </sf:form>
 </div>
 
 <sf:form action="/dialog" method="post">
   <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
   <input type="hidden" name="userNameTo" value="${userNameTo}"/>
-  <button type="submit" class="button"> Refresh </button>
+  <button type="submit" class="button"><st:message code="button.refresh"/></button>
 </sf:form>
 
 <h2>Your login: ${pageContext.request.remoteUser}</h2>
@@ -41,8 +41,8 @@
 <sf:form modelAttribute="message" method="post" action="/addMessage">
   <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}">
   <input type="hidden" name="userNameTo" value="${userNameTo}">
-  Message: <br/> <textarea cols="100" rows="5" name="messageText"></textarea>
-  <div align="center"><button type="submit" class="button">Send</button></div>
+  <st:message code="message.newMessage"/>: <br/> <textarea cols="100" rows="5" name="messageText"></textarea>
+  <div align="center"><button type="submit" class="button"><st:message code="button.send"/></button></div>
 </sf:form>
 
 <c:forEach items="${messages}" var="message">
@@ -59,7 +59,7 @@
         <input type = "hidden" name = "id" value="${message.id}">
         <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}">
         <input type="hidden" name="userNameTo" value="${userNameTo}">
-        <button type="submit" class="button">Delete</button>
+        <button type="submit" class="button"><st:message code="button.delete"/></button>
       </sf:form>
     </td>
     <td width="60%"><div>
@@ -80,7 +80,7 @@
             <input type = "hidden" name = "id" value="${message.id}">
             <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}">
             <input type="hidden" name="userNameTo" value="${userNameTo}">
-            <button type="submit" class="button">Delete</button>
+            <button type="submit" class="button"><st:message code="button.delete"/></button>
           </sf:form>
         </td>
          <td width="20%"><div>

@@ -20,48 +20,49 @@
 </div>
 <div align="right">
 <sf:form  action="/app" method="get">
-  <button type="submit" class="button">EVENT LIST</button>
+  <button type="submit" class="button"><st:message code="button.eventList"/></button>
 </sf:form>
 <c:if test = "${pageContext.request.remoteUser != null}" >
   <sf:form action="/account" method="post">
     <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-    <button type= "submit" class="button">My account</button>
+    <button type= "submit" class="button"><st:message code="button.area"/></button>
   </sf:form>
   </div>
 </c:if>
 <sf:form action="comments" method="get">
   <input type = "hidden" name = "noteId" value="${note.id}">
-  <button type="submit" class="button"> View | Comments</button>
+  <button type="submit" class="button"><st:message code="button.viewComments"/></button>
 </sf:form>
 
 <sf:form enctype="multipart/form-data" modelAttribute="noteUploader" action="/noteViewAndAlter" method="post">
 
-  <div> Coordinates: <br/> Latitude ..... <input type="text" name="latitude" value="${note.latitude}"><br/>
-                           Longitude .. <input type="text" name="longitude" value="${note.longitude}"><span class="error">${error}</span></div>
+  <div> <st:message code="message.coordinates"/> <br/>
+    <st:message code="message.latitude"/> ..... <input type="text" name="latitude" value="${note.latitude}"><br/>
+    <st:message code="message.longitude"/>.. <input type="text" name="longitude" value="${note.longitude}"><span class="error">${error}</span></div>
   <br/>
-  For latitude, use values ranging from -90 to 90.<br/>
-  Longitude should be between -180 and 180.<br/><br/>
-  <div> Address or description of the place: <br/> <textarea cols="100" rows="3" name="placeDescription">${note.placeDescription}</textarea></div>
+  <st:message code="message.latitude.message"/><br/>
+  <st:message code="message.longitude.message"/><br/><br/>
+  <div><st:message code="message.address"/><br/> <textarea cols="100" rows="3" name="placeDescription">${note.placeDescription}</textarea></div>
   <br/>
-  <div> Date: <br/> <input type="date" name="date" value="${note.date}"></div>
+  <div><st:message code="message.date"/>: <br/> <input type="date" name="date" value="${note.date}"></div>
   <br/>
-  <div> Event: <br/> <textarea cols="100" rows="10" name="action">${note.action}</textarea></div>
+  <div><st:message code="message.event"/>: <br/> <textarea cols="100" rows="10" name="action">${note.action}</textarea></div>
   <br/>
-  <h3> Upload more photos: </h3>
-  <div>Photo 1:  <input type="file" name="files[0]" /></div>
-  <div>Photo 2:  <input type="file" name="files[1]" /></div>
-  <div>Photo 3:  <input type="file" name="files[2]" /></div>
-  <div>Photo 4:  <input type="file" name="files[3]" /></div>
-  <div>Photo 5:  <input type="file" name="files[4]" /></div>
+  <h3> <st:message code="message.addPhotos"/> </h3>
+  <div><st:message code="message.photo"/>1:  <input type="file" name="files[0]" /></div>
+  <div><st:message code="message.photo"/>2:  <input type="file" name="files[1]" /></div>
+  <div><st:message code="message.photo"/>3:  <input type="file" name="files[2]" /></div>
+  <div><st:message code="message.photo"/>4:  <input type="file" name="files[3]" /></div>
+  <div><st:message code="message.photo"/>5:  <input type="file" name="files[4]" /></div>
 
 <input type="hidden" name="id" value="${note.id}">
-  <div align="center"><button value="submit" class="button"> Save </button></div>
+  <div align="center"><button value="submit" class="button"><st:message code="button.saveNote"/></button></div>
 </sf:form>
 
 <c:forEach items="${photos}" var="photo">
   <sf:form action="/deletePhoto" method="post">
   <a href = "/image/${photo.id}" title = "рисунок" target = "_blank" > <img  alt = "image" height = "100"  src="/image/${photo.id}" /></a><input type = "hidden" name = "id" value="${photo.id}">
-      <button type="submit" class="button">Delete photo</button>
+      <button type="submit" class="button"><st:message code="button.deletePhoto"/></button>
     </sf:form>
   </c:forEach>
 
