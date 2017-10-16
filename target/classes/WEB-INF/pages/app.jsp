@@ -14,7 +14,9 @@
 
 </head>
 <body>
-<%@ include file="/WEB-INF/pages/jspf/select.jspf" %>
+<div id="rightHeader">
+    <%@ include file="/WEB-INF/pages/jspf/select.jspf" %>
+</div>
 <div align="left">
   <a href="/"><img src="resources/images/ref.gif"></a>
   </div>

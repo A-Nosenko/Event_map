@@ -1,8 +1,8 @@
 <%@ include file="/WEB-INF/pages/jspf/taglib.jspf" %>
-<div id="rightHeader">
+
     <form>
         <a href="?mylocale=en"><st:message code="button.english"/> </a> |
         <a href="?mylocale=ru"><st:message code="button.russian"/> </a> |
         <a href="?mylocale=uk"><st:message code="button.ukrainian"/> </a>
     </form>
-</div>
+

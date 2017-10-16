@@ -19,13 +19,14 @@
     <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
 </head>
 <body>
-<%@ include file="/WEB-INF/pages/jspf/select.jspf" %>
-<div align="center">
-    <a href="/app"><img src="resources/images/index.gif" alt="Welcome!"></a>
+<div id="leftHeader">
+    <a href="/app"><img src="resources/images/index.gif" alt="Welcome!" width="100%" height="auto"></a>
 </div>
 
-<div align="right">
-
+<div id="rightHeader">
+    <%@ include file="/WEB-INF/pages/jspf/select.jspf" %>
+    <br/>
+    <br/>
 <sf:form  action="/register" method="get">
     <button type="submit" class="button"><st:message code="button.registration"/></button>
 </sf:form>
@@ -61,15 +62,16 @@
     <sf:form action="/map" method="post">
          <button type= "submit" class="button"><st:message code="button.eventMap"/></button>
     </sf:form>
+    <br/>
+    <br/>
+    <br/><br/><br/>
+    <br/>
+
+</div>
 
     <br/>
     <br/>
     <br/><br/><br/>
     <br/>
-    <div align="center">
-        <a href="https://github.com/A-Nosenko/Event_map" >SOURCE CODE</a>
-    </div>
-</div>
-
 </body>
 </html>

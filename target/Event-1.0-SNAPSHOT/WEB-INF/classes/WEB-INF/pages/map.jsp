@@ -18,7 +18,7 @@
 <p id="markers">${markers}</p>
 <p id="JSONObject">${JSONObject}</p>
 
-<div align="left">
+<div id="leftHeader">
   <a href="/"><img src="resources/images/ref.gif"></a>
 </div>
 <div id="rightHeader">
@@ -54,7 +54,7 @@
   <button type="submit" class="button"><st:message code="button.adminPage"/></button>
   </sf:form>
   </security:authorize>
-
+</div>
 <div id="map"></div>
 <script type="text/javascript" src = "resources/js/markers.js">
 

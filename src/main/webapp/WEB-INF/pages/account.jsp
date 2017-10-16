@@ -65,7 +65,7 @@
             <c:if test="${message.userNameTo == pageContext.request.remoteUser}">
                 <st:message code="message.receivedFrom"/>  ${message.userNameFrom}<br/></c:if>
             <c:if test="${message.userNameFrom == pageContext.request.remoteUser}">
-                <st:message code="message.sentTo"/>${message.userNameTo}<br/></c:if>
+                <st:message code="message.sentTo"/>  ${message.userNameTo}<br/></c:if>
             <fmt:formatDate value="${message.messageTime}" pattern="dd-MM-yyyy HH:mm:ss" />
         </div></td>
         <td width="25%">

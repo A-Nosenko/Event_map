@@ -27,9 +27,19 @@ span.error {
 
 #rightHeader {
 	background-color: rgb(136,162,170);
+	width: 20%;
 	float: right;
 	text-align: right;
 	margin-right: 0em;
+	color: whitesmoke;
+}
+
+#leftHeader {
+	background-color: rgb(136,162,170);
+	width: 80%;
+	float: left;
+	text-align: left;
+	margin-left: 0em;
 	color: whitesmoke;
 }
 

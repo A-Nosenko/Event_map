@@ -54,7 +54,7 @@
     ${message.userNameFrom}<br/>
     <fmt:formatDate value="${message.messageTime}" pattern="dd-MM-yyyy HH:mm:ss" />
   </div></td>
-    <td width="20%">
+    <td width="40%">
       <sf:form  action="/deleteMessage" method="post">
         <input type = "hidden" name = "id" value="${message.id}">
         <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}">
@@ -62,7 +62,7 @@
         <button type="submit" class="button"><st:message code="button.delete"/></button>
       </sf:form>
     </td>
-    <td width="60%"><div>
+    <td width="40%"><div>
      ${message.messageText}
     </div></td>
 
@@ -72,10 +72,10 @@
   <div align="right">
     <c:if test="${message.userNameFrom == pageContext.request.remoteUser}">
       <table width="50%"><tr>
-         <td width="60%"><div>
+         <td width="40%"><div>
             ${message.messageText}
         </div></td>
-        <td width="20%">
+        <td width="40%">
           <sf:form  action="/deleteMessage" method="post">
             <input type = "hidden" name = "id" value="${message.id}">
             <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}">
