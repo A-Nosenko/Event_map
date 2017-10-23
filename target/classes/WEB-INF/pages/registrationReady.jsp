@@ -19,15 +19,16 @@
 </div>
 <div align="center">
 
-    <h1><st:message code="message.youAreWelcome">  <security:authentication property="principal.username"/> !!!</h1>
+    <h1><st:message code="message.youAreWelcome"/>  <security:authentication property="principal.username"/> !!!</h1>
 
-<form  action="/app" method="get">
-    <button type="submit" class="button"><st:message code="button.eventList"/></button>
-</form>
-            <sf:form action="/account" method="post">
-                <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
-            <button type= "submit" class="button"><st:message code="button.area"/></button>
-        </sf:form>
+    <form  action="/app" method="get">
+        <button type="submit" class="button"><st:message code="button.eventList"/></button>
+    </form>
+
+    <sf:form action="/account" method="post">
+        <input type="hidden" name="userName" value="${pageContext.request.remoteUser}"/>
+        <button type= "submit" class="button"><st:message code="button.area"/></button>
+    </sf:form>
     </div>
 
 </body>

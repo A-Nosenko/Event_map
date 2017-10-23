@@ -100,3 +100,12 @@ message TEXT
 
 USE time_map;
 INSERT INTO roles (id, role) VALUES (3, 'ROLE_BANNED');
+
+======================================
+
+USE time_map;
+CREATE TABLE defaultPhoto (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name TEXT NOT NULL,
+  body LONGBLOB NOT NULL
+) DEFAULT CHARSET=utf8;

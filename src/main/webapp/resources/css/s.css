@@ -4,8 +4,7 @@ body {
 	background-image: url(../images/fon.bmp);
 	background-color: rgb(110,112,120);
 	no-repeat;
-
-     background-color: #F4FFE2;
+    background-color: #F4FFE2;
 
 	/* -moz-background-size: 100%;*/ /* Firefox 3.6+ */
 	/* -webkit-background-size: 100%; */ /* Safari 3.1+ � Chrome 4.0+ */
@@ -35,7 +34,7 @@ span.error {
 }
 
 #leftHeader {
-	background-color: rgb(136,162,170);
+	/* background-color: rgb(136,162,170); */
 	width: 80%;
 	float: left;
 	text-align: left;
