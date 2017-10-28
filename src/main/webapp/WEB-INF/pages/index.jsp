@@ -11,7 +11,11 @@
 <html>
 <head>
     <META NAME="description" CONTENT="This site contains information for bicyclists">
-    <META NAME="keywords" CONTENT="Information, bicyclist, event, road accident, bicycle, search, bike">
+    <META NAME="keywords" CONTENT="
+    archeology, archaeologist, finding, find, search, dig, artefact,
+    археология, археолог, поиск, раскопки, артефакт,
+    археологія, археолог, пошук, розкопки, артефакт">
+    <META NAME="description" CONTENT="Marks of archaeological finds on the map">
     <META NAME="Document-state" CONTENT="Dynamic">
     <META NAME="AUTHOR" CONTENT="A-Nosenko">
     <title>==EVENT_MAP==</title>
@@ -22,17 +26,11 @@
 <style>
     body {
         background-image: url(resources/images/theme.jpg);
-        background-color: rgb(110,112,120);
+        background-position: center center;
         background-repeat: no-repeat;
-        background-color: #F4FFE2;
-
-    -moz-background-size: 100%; /* Firefox 3.6+ */
-    -webkit-background-size: 100%;  /* Safari 3.1+ � Chrome 4.0+ */
-    -o-background-size: 100%; /* Opera 9.6+ */
-    background-size: 100%;
-    font-family: arial, helvetica, sans-serif;
-    font-size: 100%;
-    }
+        background-attachment: fixed;
+        background-size: cover;
+           }
 </style>
 <div id="leftHeader">
     <!--a href="/app"><img src="resources/images/index.gif" alt="Welcome!" width="100%" height="auto"></a-->
@@ -75,6 +73,28 @@
     <br/>
     <h2>
         <li><st:message code="index.li.1"/></li>
+            <c:if test = "${pageContext.request.remoteUser == null}" >
+            <h2>
+                <li><st:message code="app.li.1"/></li>
+                <li><st:message code="app.li.2"/></li>
+                <li><st:message code="app.li.3"/></li>
+            </h2>
+            </c:if>
+
+            <c:if test = "${pageContext.request.remoteUser != null}" >
+            <h2>
+                <li><st:message code="app.li.1"/></li>
+                <li><st:message code="app.li.3"/></li>
+            </h2>
+
+            <sf:form action="/dialog" method="post">
+            <li><st:message code="message.toAdmin"/></li>
+            <input type="hidden" name="userNameFrom" value="${pageContext.request.remoteUser}"/>
+            <input type="hidden" name="userNameTo" value="Admin"/>
+            <button type="submit" class="button"><st:message code="button.toAdmin"/></button>
+            </sf:form>
+
+            </c:if>
     </h2>
     <br/>
     <br/><br/><br/>
