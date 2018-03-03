@@ -1,13 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ENTITY
-  Date: 2/1/2017
-  Time: 19:00
-  To change this template use File | Settings | File Templates.
---%>
 <%@ include file="/WEB-INF/pages/jspf/taglib.jspf" %>
 <html>
 <head>
+    <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type="text/css">
+    <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
+
     <META NAME="description" CONTENT="This site contains information for bicyclists">
     <META NAME="keywords" CONTENT="
     archeology, archaeologist, finding, find, search, dig, artefact,
@@ -17,10 +13,6 @@
     <META NAME="Document-state" CONTENT="Dynamic">
     <META NAME="AUTHOR" CONTENT="A-Nosenko">
     <title>==EVENT_MAP==</title>
-    <link href="<c:url value=" resources
-    /css/s.css" />" rel="stylesheet" type = "text/css">
-    <link href="<c:url value=" resources
-    /images/head.ico" />" rel="shortcut icon" type="image/x-icon">
 </head>
 <body>
 <style>
@@ -32,6 +24,13 @@
         background-size: cover;
     }
 </style>
+
+<div id="rightHeader">
+    <%@ include file="/WEB-INF/pages/jspf/select.jspf" %>
+    <br/>
+
+</div>
+
 <div id="leftHeader">
     <!--a href="/app"><img src="resources/images/index.gif" alt="Welcome!" width="100%" height="auto"></a-->
     <br/>
@@ -99,12 +98,6 @@
     </h2>
     <br/>
     <br/><br/><br/>
-    <br/>
-
-</div>
-
-<div id="rightHeader">
-    <%@ include file="/WEB-INF/pages/jspf/select.jspf" %>
     <br/>
 
 </div>

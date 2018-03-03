@@ -72,9 +72,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/register", "/", "/app", "/image/{id}", "/commentImage/{id}",
                         "/appSearch", "/appSearchByLogin", "/appSearchByDate", "/appSearchByAddress",
-                        "/appSortByNoteTime", "/comments", "/userImage/{userName}", "/map").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/addComment", "/addNote", "/addMessage", "noteViewAndAlter").hasAnyRole("ADMIN", "USER")
+                        "/appSortByNoteTime", "/comments", "/userImage/{userName}", "/map", "/getLatLngTest")
+                .permitAll()
+                .antMatchers("/admin/**")
+                .hasRole("ADMIN")
+                .antMatchers("/addComment", "/addNote", "/addMessage", "noteViewAndAlter")
+                .hasAnyRole("ADMIN", "USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
