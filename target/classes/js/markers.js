@@ -1,6 +1,6 @@
 google.maps.event.addDomListener(window, "load", initMap);
 
-const markers = JSON.parse((document.getElementById('markers').innerText.slice(1,-1)).replace(/\n/g, ""));
+const markers = JSON.parse((document.getElementById('markers').innerText.slice(1, -1)).replace(/\n/g, ""));
 
 function initMap() {
 
@@ -10,7 +10,7 @@ function initMap() {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
 
-    const map = new google.maps.Map( document.getElementById("map"), myOptions );
+    const map = new google.maps.Map(document.getElementById("map"), myOptions);
 
     for (let title in markers) {
         createMarker(map, title);
@@ -24,8 +24,8 @@ function createMarker(map, title) {
         icon: 'resources/images/marker.gif',
         map: map,
         position: {
-            "lat" : parseFloat(markers[title].lat),
-            "lng" : parseFloat(markers[title].lng)
+            "lat": parseFloat(markers[title].lat),
+            "lng": parseFloat(markers[title].lng)
         },
         title: title,
         animation: google.maps.Animation.DROP
@@ -35,7 +35,7 @@ function createMarker(map, title) {
 }
 
 function infoWindow(map, marker, title, address = "Adress", url = "/comments?noteId=" + markers[title].id) {
-    google.maps.event.addListener(marker, 'click', () => {
+    google.maps.event.addListener(marker, 'click', () = > {
         const html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href='" + url + "'>Event view</a></p></div>";
 
     const iw = new google.maps.InfoWindow({
@@ -44,5 +44,7 @@ function infoWindow(map, marker, title, address = "Adress", url = "/comments?not
     });
 
     iw.open(map, marker);
-});
+}
+)
+;
 }

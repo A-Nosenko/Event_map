@@ -1,18 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ENTITY
-  Date: 4/14/2017
-  Time: 18:41
-  To change this template use File | Settings | File Templates.
---%>
 <%@ include file="/WEB-INF/pages/jspf/taglib.jspf" %>
 <html>
 <head>
-  <title>==EVENT_MAP==</title>
   <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
   <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
   <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyAstb_zkWsEU3szOJ6ti59x_sZVDBCAX40"></script>
 
+  <title>==EVENT_MAP==</title>
 </head>
 <body>
 <p id="markers">${markers}</p>

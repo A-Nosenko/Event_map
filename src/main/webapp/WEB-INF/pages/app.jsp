@@ -1,14 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ENTITY
-  Date: 2/16/2017
-  Time: 23:25
-  To change this template use File | Settings | File Templates.
---%>
 <%@ include file="/WEB-INF/pages/jspf/taglib.jspf" %>
 <html>
 <head>
-  <title>==EVENT_MAP==</title>
     <link href="<c:url value="resources/css/highslide.css" />" rel="stylesheet" type = "text/css">
     <link href="<c:url value="resources/css/highslide-ie6.css" />" rel="stylesheet" type = "text/css">
     <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
@@ -17,6 +9,7 @@
     <script type="text/javascript" src="resources/js/highslide-full.js"></script>
     <script type="text/javascript" src="resources/js/slide.js"></script>
 
+    <title>==EVENT_MAP==</title>
 
 </head>
 <body>

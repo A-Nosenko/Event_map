@@ -1,16 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ENTITY
-  Date: 2/16/2017
-  Time: 23:25
-  To change this template use File | Settings | File Templates.
---%>
 <%@ include file="/WEB-INF/pages/jspf/taglib.jspf" %>
 <html>
 <head>
-    <title>==EVENT_MAP==</title>
     <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
     <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
+
+    <title>==EVENT_MAP==</title>
 </head>
 <body>
 <div align="left">
