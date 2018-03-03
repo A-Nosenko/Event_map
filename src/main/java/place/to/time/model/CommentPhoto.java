@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 @Entity
 @Table(name = "photoscomment")
-public class CommentPhoto implements Serializable{
+public class CommentPhoto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

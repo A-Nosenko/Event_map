@@ -8,10 +8,10 @@ import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
-public class SecurityWebInitializer extends AbstractSecurityWebApplicationInitializer  {
+public class SecurityWebInitializer extends AbstractSecurityWebApplicationInitializer {
 
     @Override
     protected void beforeSpringSecurityFilterChain(ServletContext servletContext) {

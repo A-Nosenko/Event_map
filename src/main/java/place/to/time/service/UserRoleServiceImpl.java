@@ -5,8 +5,8 @@ import org.springframework.transaction.annotation.Transactional;
 import place.to.time.repository.UserRoleRepository;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public class UserRoleServiceImpl implements UserRoleService {
 
@@ -16,12 +16,12 @@ public class UserRoleServiceImpl implements UserRoleService {
     @Override
     @Transactional
     public void ban(long id) {
-    userRoleRepository.ban((int)id);
+        userRoleRepository.ban((int) id);
     }
 
     @Override
     @Transactional
     public void unBan(long id) {
-    userRoleRepository.unBan((int)id);
+        userRoleRepository.unBan((int) id);
     }
 }

@@ -1,8 +1,8 @@
 package place.to.time.application;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public class LatLng {
 
@@ -13,8 +13,8 @@ public class LatLng {
 
     @Override
     public String toString() {
-        return "\"" + id + "__" + Marker + "\": {\"id\": \"" + id + "\", \"lat\": \"" + lat+"\", \"lng\": \""+ lng + "\"}";
-        }
+        return "\"" + id + "__" + Marker + "\": {\"id\": \"" + id + "\", \"lat\": \"" + lat + "\", \"lng\": \"" + lng + "\"}";
+    }
 
     public LatLng() {
     }

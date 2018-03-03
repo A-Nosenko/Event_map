@@ -7,12 +7,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.LocaleResolver;
@@ -21,16 +24,13 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import place.to.time.service.*;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import javax.sql.DataSource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
+import javax.sql.DataSource;
 import java.util.Locale;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 @Configuration
 @ComponentScan("place.to.time")
@@ -69,7 +69,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public JpaVendorAdapter jpaVendorAdapter(){
+    public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setDatabase(Database.MYSQL);
         adapter.setShowSql(true);
@@ -80,7 +80,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-            DataSource dataSource, JpaVendorAdapter jpaVendorAdapter){
+            DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
         LocalContainerEntityManagerFactoryBean factoryBean =
                 new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource);
@@ -92,56 +92,56 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
-        jpaTransactionManager.setEntityManagerFactory(entityManagerFactory(dataSource(),jpaVendorAdapter()).getObject());
+        jpaTransactionManager.setEntityManagerFactory(entityManagerFactory(dataSource(), jpaVendorAdapter()).getObject());
         return jpaTransactionManager;
     }
 
     @Bean
-    public InternalResourceViewResolver viewResolver(){
-        InternalResourceViewResolver  internalResourceViewResolver = new InternalResourceViewResolver();
+    public InternalResourceViewResolver viewResolver() {
+        InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
         internalResourceViewResolver.setPrefix("WEB-INF/pages/");
         internalResourceViewResolver.setSuffix(".jsp");
         return internalResourceViewResolver;
     }
 
     @Bean
-    public NoteService noteService(){
+    public NoteService noteService() {
         return new NoteServiceImpl();
     }
 
     @Bean
-    public PhotoService photoService(){
+    public PhotoService photoService() {
         return new PhotoServiceImpl();
     }
 
     @Bean
-    public CommentService commentService(){
+    public CommentService commentService() {
         return new CommentServiceImpl();
     }
 
     @Bean
-    public CommentPhotoService commentPhotoService(){
+    public CommentPhotoService commentPhotoService() {
         return new CommentPhotoServiceImpl();
     }
 
     @Bean
-    public UserPhotoService userPhotoService(){
+    public UserPhotoService userPhotoService() {
         return new UserPhotoServiceImpl();
     }
 
     @Bean
-    public MessageService messageService(){
+    public MessageService messageService() {
         return new MessageServiceImpl();
     }
 
     @Bean
-    public LatLngService latLngService(){
+    public LatLngService latLngService() {
         return new LatLngServiceImpl();
     }
 
     @Bean
-    public UserRoleService userRoleService(){
-        return  new UserRoleServiceImpl();
+    public UserRoleService userRoleService() {
+        return new UserRoleServiceImpl();
     }
 
     @Bean
@@ -151,14 +151,16 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
+
     @Bean
-    public LocaleResolver localeResolver(){
+    public LocaleResolver localeResolver() {
         CookieLocaleResolver resolver = new CookieLocaleResolver();
         resolver.setDefaultLocale(Locale.ENGLISH);
         resolver.setCookieName("myLocaleCookie");
         resolver.setCookieMaxAge(4800);
         return resolver;
     }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
@@ -167,7 +169,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer){
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
 

@@ -10,8 +10,8 @@ import place.to.time.service.UserRoleService;
 import place.to.time.service.UserService;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 @Controller
 public class AdminPageController {
@@ -23,20 +23,20 @@ public class AdminPageController {
     private UserRoleService userRoleService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/admin")
-    public ModelAndView getAdminPage(){
+    public ModelAndView getAdminPage() {
         ModelAndView modelAndView = new ModelAndView("adminPage", "users", userService.getUsersList());
         return modelAndView;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/ban")
-    public ModelAndView ban(@RequestParam(value = "id")long id){
+    public ModelAndView ban(@RequestParam(value = "id") long id) {
         userRoleService.ban(id);
         ModelAndView modelAndView = new ModelAndView("adminPage", "users", userService.getUsersList());
         return modelAndView;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/unBan")
-    public ModelAndView unBan(@RequestParam(value = "id")long id){
+    public ModelAndView unBan(@RequestParam(value = "id") long id) {
         userRoleService.unBan(id);
         ModelAndView modelAndView = new ModelAndView("adminPage", "users", userService.getUsersList());
         return modelAndView;

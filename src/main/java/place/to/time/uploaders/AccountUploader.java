@@ -3,8 +3,8 @@ package place.to.time.uploaders;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public class AccountUploader {
 

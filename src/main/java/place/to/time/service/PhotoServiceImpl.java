@@ -3,11 +3,12 @@ package place.to.time.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import place.to.time.model.Photo;
 import place.to.time.repository.PhotoRepository;
+
 import java.util.List;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public class PhotoServiceImpl implements PhotoService {
 
@@ -20,7 +21,9 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public void delete(Photo photo) {photoRepository.delete(photo); }
+    public void delete(Photo photo) {
+        photoRepository.delete(photo);
+    }
 
     @Override
     public void save(Photo photo) {
@@ -32,22 +35,28 @@ public class PhotoServiceImpl implements PhotoService {
         return photoRepository.findPhotoByNoteId(noteId);
     }
 
-    public long[] getIdMassive(long noteId){
+    public long[] getIdMassive(long noteId) {
         List<Photo> photoList = findPhotoByNoteId(noteId);
         int i = photoList.size();
         long[] result = new long[i];
-        for(int t = 0; t < result.length; t++ ){result[t] = photoList.get(t).getId();}
+        for (int t = 0; t < result.length; t++) {
+            result[t] = photoList.get(t).getId();
+        }
         return result;
     }
 
     @Override
-    public List<Photo> findAllPhotos(){return photoRepository.findAll();}
+    public List<Photo> findAllPhotos() {
+        return photoRepository.findAll();
+    }
 
     @Override
-    public byte[] findPhoto(long id){
+    public byte[] findPhoto(long id) {
         return photoRepository.findOne(id).getBody();
     }
 
     @Override
-    public Photo getPhoto(long id){return photoRepository.findOne(id);}
+    public Photo getPhoto(long id) {
+        return photoRepository.findOne(id);
+    }
 }

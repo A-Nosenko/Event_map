@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 @Controller
 public class AccountController {
@@ -32,19 +32,19 @@ public class AccountController {
     MessageService messageService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/account")
-    public ModelAndView getAccount(String userName){
+    public ModelAndView getAccount(String userName) {
         ModelAndView modelAndView = new ModelAndView("account", "accountUploader", new AccountUploader());
         modelAndView.addObject("messages", messageService.getMessages(userName));
-	    return modelAndView;
+        return modelAndView;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/setAccount")
-    public ModelAndView setAccount(@ModelAttribute("accountUploader")AccountUploader accountUploader
-                                   ) throws IOException {
+    public ModelAndView setAccount(@ModelAttribute("accountUploader") AccountUploader accountUploader
+    ) throws IOException {
         ModelAndView modelAndView = new ModelAndView("account", "accountUploader", new AccountUploader());
         MultipartFile file = accountUploader.getFile();
         String userName = accountUploader.getUserName();
-        if(file.getBytes().length > 0) {
+        if (file.getBytes().length > 0) {
             long userId = userService.findByLogin(userName).getId();
             UserPhoto currentPhoto = userPhotoService.findUserPhotoByUserId(userId);
             if (currentPhoto != null) {
@@ -72,8 +72,8 @@ public class AccountController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/deleteMessageFromAccount")
-    public ModelAndView deleteMessageFromAccount(@RequestParam(value = "id")long id,
-                                      @RequestParam(value = "thisUserName")String thisUserName){
+    public ModelAndView deleteMessageFromAccount(@RequestParam(value = "id") long id,
+                                                 @RequestParam(value = "thisUserName") String thisUserName) {
         messageService.delete(id);
         return getAccount(thisUserName);
     }

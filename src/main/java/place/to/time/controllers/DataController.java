@@ -5,13 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import place.to.time.application.FullNote;
-import place.to.time.uploaders.NoteUploader;
 import place.to.time.model.Note;
 import place.to.time.model.Photo;
-import place.to.time.service.*;
-import org.springframework.web.servlet.ModelAndView;
+import place.to.time.service.CommentPhotoService;
+import place.to.time.service.CommentService;
+import place.to.time.service.NoteService;
+import place.to.time.service.PhotoService;
+import place.to.time.uploaders.NoteUploader;
 import place.to.time.validation.PlaceValidator;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -21,8 +25,8 @@ import java.util.List;
 
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 @Controller
 public class DataController {
@@ -48,22 +52,22 @@ public class DataController {
         boolean flagNext = false;
         boolean flagPrev = false;
         List<Long> idList = noteService.getIdlist();
-        if(idList.size() > VOLUME_OF_PAGE) {
+        if (idList.size() > VOLUME_OF_PAGE) {
             flagNext = true;
             count = idList.size() / VOLUME_OF_PAGE;
-            if((idList.size() % VOLUME_OF_PAGE) > 0) count++;
-            }
+            if ((idList.size() % VOLUME_OF_PAGE) > 0) count++;
+        }
 
         List<Photo> photos = new ArrayList<>();
         List<Note> noteList = new ArrayList<>();
-        for(int i = counter * VOLUME_OF_PAGE; (i < idList.size()) && (i < counter * VOLUME_OF_PAGE + VOLUME_OF_PAGE); i++){
+        for (int i = counter * VOLUME_OF_PAGE; (i < idList.size()) && (i < counter * VOLUME_OF_PAGE + VOLUME_OF_PAGE); i++) {
             long noteId = idList.get(i);
             noteList.add(noteService.findById(noteId));
             photos.addAll(photoService.findPhotoByNoteId(noteId));
         }
 
         List<FullNote> fullNoteList = new ArrayList<>();
-        for(Note note : noteList){
+        for (Note note : noteList) {
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
@@ -77,38 +81,38 @@ public class DataController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/app")
-    public ModelAndView app(@RequestParam(value = "counter")int counter,
-                            @RequestParam(value = "count")int count,
+    public ModelAndView app(@RequestParam(value = "counter") int counter,
+                            @RequestParam(value = "count") int count,
                             @RequestParam(value = "isNext") boolean isNext) {
 
         boolean flagNext = false;
         boolean flagPrev = false;
-        if(isNext) {
+        if (isNext) {
             counter++;
         } else {
             counter--;
         }
-        if(counter > 0) {
+        if (counter > 0) {
             flagPrev = true;
         }
 
         List<Long> idList = noteService.getIdlist();
-        if(idList.size() > VOLUME_OF_PAGE * (counter + 1)) {
+        if (idList.size() > VOLUME_OF_PAGE * (counter + 1)) {
             flagNext = true;
             count = idList.size() / VOLUME_OF_PAGE;
-            if((idList.size() % VOLUME_OF_PAGE) > 0) count++;
+            if ((idList.size() % VOLUME_OF_PAGE) > 0) count++;
         }
 
         List<Photo> photos = new ArrayList<>();
         List<Note> noteList = new ArrayList<>();
-        for(int i = counter * VOLUME_OF_PAGE; (i < idList.size()) && (i < counter * VOLUME_OF_PAGE + VOLUME_OF_PAGE); i++){
+        for (int i = counter * VOLUME_OF_PAGE; (i < idList.size()) && (i < counter * VOLUME_OF_PAGE + VOLUME_OF_PAGE); i++) {
             long noteId = idList.get(i);
             noteList.add(noteService.findById(noteId));
             photos.addAll(photoService.findPhotoByNoteId(noteId));
         }
 
         List<FullNote> fullNoteList = new ArrayList<>();
-        for(Note note : noteList){
+        for (Note note : noteList) {
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
 
@@ -122,12 +126,12 @@ public class DataController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/appSearch")
-        public ModelAndView appSearch(@RequestParam(value="pattern")String pattern) {
+    public ModelAndView appSearch(@RequestParam(value = "pattern") String pattern) {
         String finalPattern = pattern.replace(" ", "%");
         List<FullNote> fullNoteList = new ArrayList<>();
         List<Note> noteList = noteService.findNotes(finalPattern);
         List<Photo> photos = new ArrayList<>();
-        for(Note note : noteList){
+        for (Note note : noteList) {
             photos.addAll(photoService.findPhotoByNoteId(note.getId()));
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
@@ -138,12 +142,12 @@ public class DataController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/appSearchByLogin")
-    public ModelAndView appSearchByLogin(@RequestParam(value="pattern")String pattern) {
+    public ModelAndView appSearchByLogin(@RequestParam(value = "pattern") String pattern) {
         String finalPattern = pattern.replace(" ", "%");
         List<FullNote> fullNoteList = new ArrayList<>();
         List<Note> noteList = noteService.findNotesByUserName(finalPattern);
         List<Photo> photos = new ArrayList<>();
-        for(Note note : noteList){
+        for (Note note : noteList) {
             photos.addAll(photoService.findPhotoByNoteId(note.getId()));
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
@@ -154,11 +158,11 @@ public class DataController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/appSearchByDate")
-    public ModelAndView appSearchByDate(@RequestParam(value="pattern")String date) {
+    public ModelAndView appSearchByDate(@RequestParam(value = "pattern") String date) {
         List<FullNote> fullNoteList = new ArrayList<>();
         List<Note> noteList = noteService.findNotesByDate(date);
         List<Photo> photos = new ArrayList<>();
-        for(Note note : noteList){
+        for (Note note : noteList) {
             photos.addAll(photoService.findPhotoByNoteId(note.getId()));
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
@@ -173,7 +177,7 @@ public class DataController {
         List<FullNote> fullNoteList = new ArrayList<>();
         List<Note> noteList = noteService.sortNotesByLoadTime();
         List<Photo> photos = new ArrayList<>();
-        for(Note note : noteList){
+        for (Note note : noteList) {
             photos.addAll(photoService.findPhotoByNoteId(note.getId()));
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
@@ -184,12 +188,12 @@ public class DataController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/appSearchByAddress")
-    public ModelAndView appSearchByAddress(@RequestParam(value="pattern")String pattern) {
+    public ModelAndView appSearchByAddress(@RequestParam(value = "pattern") String pattern) {
         String finalPattern = pattern.replace(" ", "%");
         List<FullNote> fullNoteList = new ArrayList<>();
         List<Note> noteList = noteService.findNotesByPlaceDescription(finalPattern);
         List<Photo> photos = new ArrayList<>();
-        for(Note note : noteList){
+        for (Note note : noteList) {
             photos.addAll(photoService.findPhotoByNoteId(note.getId()));
             fullNoteList.add(new FullNote(commentService.commentCounter(note.getId()), note));
         }
@@ -208,53 +212,59 @@ public class DataController {
     @RequestMapping(method = RequestMethod.GET, value = "/addNote")
     public String addNote(Model model) {
         model.addAttribute("noteUploader", new NoteUploader());
-        return "add_note";}
+        return "add_note";
+    }
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/addNote")
-    public String saveNote(@ModelAttribute("noteUploader")NoteUploader noteUploader) throws IOException{
+    public String saveNote(@ModelAttribute("noteUploader") NoteUploader noteUploader) throws IOException {
         Note note = new Note(noteUploader.getUserName(), null, null, noteUploader.getPlaceDescription(),
                 noteUploader.getDate(), noteUploader.getAction(), new Timestamp(System.currentTimeMillis()));
         String latitude = noteUploader.getLatitude().trim();
         String longitude = noteUploader.getLongitude().trim();
-        if(PlaceValidator.validate(latitude, longitude)){
+        if (PlaceValidator.validate(latitude, longitude)) {
             note.setLatitude(latitude);
-            note.setLongitude(longitude);}
+            note.setLongitude(longitude);
+        }
         noteService.save(note);
         List<MultipartFile> files = noteUploader.getFiles();
-        if(files != null && files.size() > 0) {
-         for (MultipartFile file : files) {
+        if (files != null && files.size() > 0) {
+            for (MultipartFile file : files) {
 
-             if(!file.isEmpty()) photoService.save(new Photo(file.getOriginalFilename(), file.getBytes(), note.getId()));
-          }
+                if (!file.isEmpty())
+                    photoService.save(new Photo(file.getOriginalFilename(), file.getBytes(), note.getId()));
+            }
 
-       }
+        }
         return "redirect:/app";
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/delete")
-    public ModelAndView delete(@RequestParam(value="id") long id ) {
-        return new ModelAndView("confirmDelete", "id" , id);
+    public ModelAndView delete(@RequestParam(value = "id") long id) {
+        return new ModelAndView("confirmDelete", "id", id);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/deleteTrue")
-    public ModelAndView deleteTrue(@RequestParam(value="id") long id ) {
+    public ModelAndView deleteTrue(@RequestParam(value = "id") long id) {
 
-        if(commentService.findCommentByNoteId(id) != null){
+        if (commentService.findCommentByNoteId(id) != null) {
             long[] commentIdMassive = commentService.getIdMassive(id);
-            for(long commentId: commentIdMassive){
+            for (long commentId : commentIdMassive) {
 
                 long[] photoIdMassive = commentPhotoService.getIdMassive(commentId);
-                if(photoIdMassive.length > 0){
-                    for(long photoId: photoIdMassive){ commentPhotoService.delete(photoId);}
+                if (photoIdMassive.length > 0) {
+                    for (long photoId : photoIdMassive) {
+                        commentPhotoService.delete(photoId);
+                    }
                 }
 
-                commentService.delete(commentId); }
+                commentService.delete(commentId);
+            }
         }
 
-        if(noteService.findById(id) != null) {
+        if (noteService.findById(id) != null) {
             long[] photoIdMassive = photoService.getIdMassive(id);
-            if(photoIdMassive.length > 0) {
+            if (photoIdMassive.length > 0) {
                 for (long photoId : photoIdMassive) {
                     photoService.delete(photoId);
                 }

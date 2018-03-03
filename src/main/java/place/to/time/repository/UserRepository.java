@@ -8,14 +8,16 @@ import place.to.time.model.User;
 import java.util.List;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByLogin(String login);
+
     User findByEmail(String email);
+
     @Query("SELECT user FROM User user")
     List<User> getAllUsers();
 }

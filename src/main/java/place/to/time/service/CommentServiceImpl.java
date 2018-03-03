@@ -7,8 +7,8 @@ import place.to.time.repository.CommentRepository;
 import java.util.List;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public class CommentServiceImpl implements CommentService {
 
@@ -41,8 +41,10 @@ public class CommentServiceImpl implements CommentService {
     public long[] getIdMassive(long noteId) {
         List<Comment> commentList = findCommentByNoteId(noteId);
         int i = commentList.size();
-        long [] result = new long[i];
-        for(int t = 0; t < result.length; t++){result[t] = commentList.get(t).getId();}
+        long[] result = new long[i];
+        for (int t = 0; t < result.length; t++) {
+            result[t] = commentList.get(t).getId();
+        }
         return result;
     }
 

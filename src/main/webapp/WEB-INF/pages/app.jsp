@@ -9,8 +9,14 @@
 <html>
 <head>
   <title>==EVENT_MAP==</title>
-  <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
-  <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
+    <link href="<c:url value="resources/css/highslide.css" />" rel="stylesheet" type = "text/css">
+    <link href="<c:url value="resources/css/highslide-ie6.css" />" rel="stylesheet" type = "text/css">
+    <link href="<c:url value="resources/css/s.css" />" rel="stylesheet" type = "text/css">
+    <link href="<c:url value="resources/images/head.ico" />" rel="shortcut icon" type="image/x-icon">
+
+    <script type="text/javascript" src="resources/js/highslide-full.js"></script>
+    <script type="text/javascript" src="resources/js/slide.js"></script>
+
 
 </head>
 <body>
@@ -132,11 +138,14 @@
             <td width="10%"> <st:message code="message.date"/> </td>
             <td width="10%"> <st:message code="message.address"/> </td>
             <td width="20%"> <st:message code="message.event"/> </td>
-            <td width="30%"> <st:message code="message.photo"/> </td>
+            <td width="30%">  </td>
             <td width="15%">     </td>
         </tr></thead>
 
         <c:forEach items="${fullNoteList}" var="fullNote">
+            <script type="text/javascript">
+                counter++;
+            </script>
             <tr>
                 <td> <div>
                     <img  alt = "image" width="100%"  src="/userImage/${fullNote.note.userName}" />
@@ -152,7 +161,8 @@
                     <fmt:formatDate value="${fullNote.note.note_time}" pattern="dd-MM-yyyy HH:mm:ss" /> </div>
 
                 </td>
-                <td> <div style="height:207px; overflow:auto"><c:if test="${not empty fullNote.note.latitude and not empty fullNote.note.longitude}">
+                <td>
+                    <div style="height:207px; overflow:auto"><c:if test="${not empty fullNote.note.latitude and not empty fullNote.note.longitude}">
                     <a href = "https://www.google.com.ua/maps/place/@${fullNote.note.latitude},${fullNote.note.longitude},291m/data=!3m2!1e3!4b1!4m5!3m4!1s0x0:0x0!8m2!3d${fullNote.note.latitude}!4d${fullNote.note.longitude}" target = "_blank">
                         <img alt = "== Map ==" align="middle" src = "resources/images/map.gif">
                     </a></c:if></div> </td>
@@ -168,12 +178,21 @@
                         <button type="submit" class="button"><st:message code="button.viewComments"/> </button>
                     </sf:form>
                     <div style="height:207px; overflow:auto"> ${fullNote.note.action} </div> </td>
-                <td><div style="height:207px; overflow:auto">
+                    <td><div style="height:207px; overflow:auto">
+                    <fieldset><legend><st:message code="message.photo"/></legend>
                     <c:forEach items="${photos}" var="photo">
+
                         <c:if test="${fullNote.note.id == photo.noteId}">
-                            <a href = "/image/${photo.id}" title = "image" target = "_blank" > <img  alt = "image" height = "100"  src="/image/${photo.id}" /></a>
+                            <!--a href = "/image/${photo.id}" title = "image" target = "_blank" >
+                                <img  alt = "image" height = "100"  src="/image/${photo.id}" /></a-->
+
+                            <a class="highslide" href = "/image/${photo.id}"
+                               onclick="return hs.expand(this, {slideshowGroup: counter})" title = "image">
+                                <img  alt = "image" height = "100"  src="/image/${photo.id}" /></a>
+
                         </c:if>
                     </c:forEach>
+                    </fieldset>
                 </div></td>
                 <td>
                     <c:if test="${pageContext.request.remoteUser == fullNote.note.userName}">
@@ -197,6 +216,7 @@
                         </sf:form>
                     </c:if>
                 </td></tr>
+
         </c:forEach>
     </table>
 

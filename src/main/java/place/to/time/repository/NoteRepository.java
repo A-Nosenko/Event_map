@@ -8,8 +8,8 @@ import place.to.time.model.Note;
 import java.util.List;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
@@ -20,13 +20,17 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     List<Long> findAllNotesId();
 
     @Query("SELECT n FROM Note n WHERE  n.action LIKE:pattern ORDER BY n.date DESC")
-    List<Note> findNotes(@Param("pattern")String pattern);
+    List<Note> findNotes(@Param("pattern") String pattern);
+
     @Query("SELECT n FROM Note n WHERE n.userName LIKE :pattern ORDER BY n.date DESC")
-    List<Note> findNotesByUserName(@Param("pattern")String pattern);
+    List<Note> findNotesByUserName(@Param("pattern") String pattern);
+
     @Query("SELECT n FROM Note n WHERE n.date = :date ORDER BY n.date DESC")
-    List<Note> findNotesByDate(@Param("date")String date);
+    List<Note> findNotesByDate(@Param("date") String date);
+
     @Query("SELECT n FROM Note n WHERE n.placeDescription LIKE :pattern ORDER BY n.date DESC")
-    List<Note> findNotesByPlaceDescription(@Param("pattern")String pattern);
+    List<Note> findNotesByPlaceDescription(@Param("pattern") String pattern);
+
     @Query("SELECT n FROM Note n ORDER BY n.note_time DESC ")
-    List<Note> sortNotesByLoadTime ();
+    List<Note> sortNotesByLoadTime();
 }

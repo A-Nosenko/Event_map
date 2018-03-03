@@ -15,43 +15,43 @@ import place.to.time.model.User;
 import place.to.time.service.*;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    public User user(){
+    public User user() {
         return new User();
     }
 
     @Bean
-    SecurityService securityService(){
+    SecurityService securityService() {
         return new SecurityServiceImpl();
     }
 
     @Bean
-    public UserService userService(){
+    public UserService userService() {
         return new UserServiceImpl();
     }
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return new UserDetailsServiceImpl();
     }
 
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
-       return super.authenticationManagerBean();
+        return super.authenticationManagerBean();
     }
 
     @Autowired

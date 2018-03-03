@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -45,7 +45,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByEmail(String email) {return userRepository.findByEmail(email);}
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 
     @Override
     public List<User> getUsersList() {

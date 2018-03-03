@@ -15,9 +15,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * @author Nosenko Anatolii
+ *         Implementation of {@link org.springframework.security.core.userdetails.UserDetailsService} interface.
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
- * Implementation of {@link org.springframework.security.core.userdetails.UserDetailsService} interface.
  */
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -31,7 +31,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findByLogin(login);
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 
-        for(Role role: user.getRoles()){
+        for (Role role : user.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getRole()));
         }
         return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), grantedAuthorities);

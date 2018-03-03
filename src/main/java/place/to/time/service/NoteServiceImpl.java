@@ -7,8 +7,8 @@ import place.to.time.repository.NoteRepository;
 import java.util.List;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public class NoteServiceImpl implements NoteService {
 
@@ -21,12 +21,14 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public void save(Note note){noteRepository.save(note);}
+    public void save(Note note) {
+        noteRepository.save(note);
+    }
 
     @Override
     public void delete(long id) {
-       noteRepository.delete(id);
-      }
+        noteRepository.delete(id);
+    }
 
     @Override
     public Note findById(long id) {
@@ -57,8 +59,8 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public List<Note> sortNotesByLoadTime (){
-       return noteRepository.sortNotesByLoadTime();
+    public List<Note> sortNotesByLoadTime() {
+        return noteRepository.sortNotesByLoadTime();
     }
 
     @Override

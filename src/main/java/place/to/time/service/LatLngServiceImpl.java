@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public class LatLngServiceImpl implements LatLngService {
 
@@ -21,8 +21,8 @@ public class LatLngServiceImpl implements LatLngService {
     public List<LatLng> getLatLng() {
         List<Note> noteList = noteRepository.findAllNotes();
         List<LatLng> latLngList = new ArrayList();
-        for (Note note : noteList){
-            latLngList.add(new LatLng(note.getId(), note.getLatitude(), note.getLongitude(),note.getPlaceDescription() + " :: " + note.getAction()));
+        for (Note note : noteList) {
+            latLngList.add(new LatLng(note.getId(), note.getLatitude(), note.getLongitude(), note.getPlaceDescription() + " :: " + note.getAction()));
         }
         return latLngList;
     }

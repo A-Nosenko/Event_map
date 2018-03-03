@@ -8,13 +8,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import place.to.time.model.User;
-import place.to.time.validation.RegistrationValidator;
 import place.to.time.service.SecurityService;
 import place.to.time.service.UserService;
+import place.to.time.validation.RegistrationValidator;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 @Controller
 public class SecurityController {
@@ -36,7 +36,7 @@ public class SecurityController {
         if (error != null) {
             model.addAttribute("error", "Wrong login or password.");
         }
-          return "login";
+        return "login";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/register")

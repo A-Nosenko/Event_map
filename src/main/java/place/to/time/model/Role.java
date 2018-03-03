@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 @Entity
 @Table(name = "roles")
@@ -18,13 +18,14 @@ public class Role implements Serializable {
     @Column(name = "role")
     private String role;
 
-    public String toString(){
+    public String toString() {
         return role;
     }
 
-    public Role() {}
+    public Role() {
+    }
 
-    public Role(String role){
+    public Role(String role) {
         this.role = role;
     }
 

@@ -7,8 +7,8 @@ import place.to.time.repository.DefaultUserPhotoRepository;
 import place.to.time.repository.UserPhotoRepository;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public class UserPhotoServiceImpl implements UserPhotoService {
 

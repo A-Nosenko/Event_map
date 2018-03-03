@@ -2,14 +2,17 @@ package place.to.time.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import place.to.time.uploaders.NoteUploader;
 import place.to.time.model.Note;
 import place.to.time.model.Photo;
 import place.to.time.service.NoteService;
 import place.to.time.service.PhotoService;
+import place.to.time.uploaders.NoteUploader;
 import place.to.time.validation.PlaceValidator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +20,8 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 @Controller
 public class NoteController {
@@ -30,29 +33,30 @@ public class NoteController {
     private PhotoService photoService;
 
     @RequestMapping(method = RequestMethod.GET, value = "noteViewAndAlter")
-    public ModelAndView noteViewAndAlter(@RequestParam(value = "id")long id){
+    public ModelAndView noteViewAndAlter(@RequestParam(value = "id") long id) {
         ModelAndView modelAndView = new ModelAndView("noteView", "note", noteService.findById(id));
         modelAndView.addObject("photos", photoService.findPhotoByNoteId(id));
         modelAndView.addObject("noteUploader", new NoteUploader());
-        if(noteService.findById(id).getLatitude() == null || noteService.findById(id).getLongitude() == null){
+        if (noteService.findById(id).getLatitude() == null || noteService.findById(id).getLongitude() == null) {
             modelAndView.addObject("error", "Coordinates are set incorrectly");
         }
         return modelAndView;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "noteViewAndAlter")
-    public String saveNote(@ModelAttribute("noteUploader")NoteUploader noteUploader,
-                                 @RequestParam(value = "id")long id,
-                                 HttpServletRequest request) throws IOException{
+    public String saveNote(@ModelAttribute("noteUploader") NoteUploader noteUploader,
+                           @RequestParam(value = "id") long id,
+                           HttpServletRequest request) throws IOException {
         Note note = noteService.findById(id);
         note.setAction(noteUploader.getAction());
         note.setDate(noteUploader.getDate());
 
         String latitude = noteUploader.getLatitude().trim();
         String longitude = noteUploader.getLongitude().trim();
-        if(PlaceValidator.validate(latitude, longitude)){
+        if (PlaceValidator.validate(latitude, longitude)) {
             note.setLatitude(latitude);
-            note.setLongitude(longitude);} else {
+            note.setLongitude(longitude);
+        } else {
             note.setLatitude(null);
             note.setLongitude(null);
         }
@@ -60,10 +64,10 @@ public class NoteController {
         noteService.save(note);
 
         List<MultipartFile> files = noteUploader.getFiles();
-        if(files != null && files.size() > 0) {
+        if (files != null && files.size() > 0) {
             for (MultipartFile file : files) {
 
-                if(!file.isEmpty()) photoService.save(new Photo(file.getOriginalFilename(),
+                if (!file.isEmpty()) photoService.save(new Photo(file.getOriginalFilename(),
                         file.getBytes(), note.getId()));
             }
 
@@ -73,10 +77,10 @@ public class NoteController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/deletePhoto")
-    public String deletePhoto(@RequestParam(value="id") long id,
-                                    HttpServletRequest request) {
+    public String deletePhoto(@RequestParam(value = "id") long id,
+                              HttpServletRequest request) {
         long noteId = photoService.getPhoto(id).getNoteId();
-        if(photoService.getPhoto(id) != null) {
+        if (photoService.getPhoto(id) != null) {
             photoService.delete(id);
         }
         return "redirect:" + request.getHeader("Referer");

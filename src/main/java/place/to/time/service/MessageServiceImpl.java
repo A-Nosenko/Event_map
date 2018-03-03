@@ -3,18 +3,19 @@ package place.to.time.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import place.to.time.model.Message;
 import place.to.time.repository.MessageRepository;
+
 import java.util.List;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public class MessageServiceImpl implements MessageService {
 
     @Autowired
     private MessageRepository messageRepository;
 
-    public List<Message> getDialog(String userNameFrom, String userNameTo){
+    public List<Message> getDialog(String userNameFrom, String userNameTo) {
         return messageRepository.getDialog(userNameFrom, userNameTo);
     }
 

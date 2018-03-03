@@ -7,8 +7,8 @@ import place.to.time.repository.CommentPhotoRepository;
 import java.util.List;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public class CommentPhotoServiceImpl implements CommentPhotoService {
 
@@ -25,7 +25,9 @@ public class CommentPhotoServiceImpl implements CommentPhotoService {
         List<CommentPhoto> photoList = findCommentPhotoByCommentId(commentId);
         int i = photoList.size();
         long[] result = new long[i];
-        for(int t = 0; t < result.length; t++ ){result[t] = photoList.get(t).getId();}
+        for (int t = 0; t < result.length; t++) {
+            result[t] = photoList.get(t).getId();
+        }
         return result;
     }
 

@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
 public class SecurityServiceImpl implements SecurityService {
 
@@ -28,8 +28,8 @@ public class SecurityServiceImpl implements SecurityService {
     @Override
     public String findLoggedLogin() {
         Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
-        if(userDetails instanceof UserDetails){
-            return ((UserDetails)userDetails).getUsername();
+        if (userDetails instanceof UserDetails) {
+            return ((UserDetails) userDetails).getUsername();
         }
         return null;
     }
@@ -43,7 +43,7 @@ public class SecurityServiceImpl implements SecurityService {
                 new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
         authenticationManager.authenticate(authenticationToken);
 
-        if(authenticationToken.isAuthenticated()){
+        if (authenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
             logger.debug(String.format("Добро пожаловать, %s !!!", login));

@@ -3,10 +3,10 @@ package place.to.time.application;
 import place.to.time.model.Note;
 
 /**
+ * @author Nosenko Anatolii
  * @version 2.0 29 August 2017
- * @author  Nosenko Anatolii
  */
- public class FullNote {
+public class FullNote {
 
     private long commentCount;
     private Note note;
