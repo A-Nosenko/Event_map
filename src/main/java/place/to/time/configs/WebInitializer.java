@@ -1,8 +1,6 @@
 package place.to.time.configs;
 
-/**
- * Created by ENTITY on 2/1/2017.
- */
+
 
 
 import org.springframework.web.WebApplicationInitializer;
