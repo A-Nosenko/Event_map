@@ -19,7 +19,7 @@
         <spring.context>4.3.3.RELEASE</spring.context>
         <commons.validator>1.4.0</commons.validator>
         <commons-dbc.version>1.4</commons-dbc.version>
-        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
         <hibernate-core.version>5.2.7.Final</hibernate-core.version>
         <hibernate-entitymanager.version>5.2.7.Final</hibernate-entitymanager.version>
         <hibernate-validator.version>5.4.0.Final</hibernate-validator.version>
